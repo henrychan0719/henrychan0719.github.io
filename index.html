@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Henry Chan</title>
+  <title>Henry Chan | Academic Homepage</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Font Awesome Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -16,12 +15,12 @@
 
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Navigation -->
   <header class="topbar">
     <nav>
-      <a href="#home">Homepage</a>
-      <a href="#about">About Me</a>
-      <a href="#news">News</a>
+      <a href="#home" class="brand">Henry Chan</a>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
       <a href="#publications">Publications</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
@@ -37,25 +36,44 @@
         <img src="profile.png" alt="Henry Chan" class="profile-img" />
 
         <h1>Henry Chan</h1>
-        <p class="subtitle">Undergraduate Student</p>
+        <p class="subtitle">Undergraduate Researcher</p>
+
         <p class="affiliation">
           Department of Electrical Engineering<br />
           Tamkang University
         </p>
 
-        <div class="focus-box">
-          <p>Now focusing on</p>
-          <strong>Document Image Analysis</strong><br />
-          <strong>Mamba-based Vision Models</strong>
+        <div class="identity-box">
+          <p>Research Theme</p>
+          <strong>Restoring Local Details</strong><br />
+          <strong>in Mamba-based Vision Models</strong>
         </div>
 
         <ul class="social-list">
-          <li><i class="fa-solid fa-location-dot"></i> New Taipei, Taiwan</li>
-          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:henrychan940719@gmail.com">Email</a></li>
-          <li><i class="fa-brands fa-github"></i> <a href="https://github.com/henrychan0719" target="_blank">GitHub</a></li>
-          <li><i class="fa-brands fa-linkedin"></i> <a href="#" target="_blank">LinkedIn</a></li>
-          <li><i class="fa-solid fa-graduation-cap"></i> <a href="#" target="_blank">Google Scholar</a></li>
-          <li><i class="fa-brands fa-orcid"></i> <a href="#" target="_blank">ORCID</a></li>
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            New Taipei, Taiwan
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:henrychan940719@gmail.com">Email</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-github"></i>
+            <a href="https://github.com/henrychan0719" target="_blank">GitHub</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-linkedin"></i>
+            <a href="#" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-graduation-cap"></i>
+            <a href="#" target="_blank">Google Scholar</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-orcid"></i>
+            <a href="#" target="_blank">ORCID</a>
+          </li>
         </ul>
       </div>
     </aside>
@@ -63,21 +81,42 @@
     <!-- Main Content -->
     <main class="content">
 
+      <!-- Hero -->
+      <section class="hero">
+        <p class="hero-label">
+          Computer Vision · Document Image Analysis · Mamba Models
+        </p>
+
+        <h1>Building efficient vision models for degraded visual understanding.</h1>
+
+        <p>
+          I focus on document image binarization, semantic segmentation, and
+          Mamba-based dense prediction models, especially for recovering fine
+          local structures such as strokes, boundaries, and small regions.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#publications" class="hero-btn primary">View Research</a>
+          <a href="#projects" class="hero-btn">View Projects</a>
+        </div>
+      </section>
+
       <!-- About -->
       <section id="about" class="section">
         <h2>About Me</h2>
 
         <p>
-          I am currently an undergraduate student in the Department of Electrical Engineering
-          at Tamkang University, Taiwan. My research interests include computer vision,
-          document image analysis, semantic segmentation, and efficient deep learning architectures.
+          I am currently an undergraduate student in the Department of Electrical
+          Engineering at Tamkang University, Taiwan. My research interests include
+          computer vision, document image analysis, semantic segmentation, and
+          efficient deep learning architectures.
         </p>
 
         <p>
-          I am currently working on Mamba-based models for document image binarization
-          and semantic segmentation, with a focus on restoring fine local structures,
-          improving robustness under degraded visual conditions, and designing efficient
-          dense prediction models.
+          I am currently working on Mamba-based models for document image
+          binarization and semantic segmentation. My current research direction
+          focuses on how long-range state space propagation can be combined with
+          local detail restoration for robust dense prediction.
         </p>
 
         <div class="tag-group">
@@ -90,8 +129,8 @@
       </section>
 
       <!-- News -->
-      <section id="news" class="section">
-        <h2><span class="emoji">📢</span> News</h2>
+      <section class="section">
+        <h2><span class="section-icon">📢</span> News</h2>
 
         <div class="news-box">
           <ul>
@@ -104,73 +143,169 @@
         </div>
       </section>
 
-      <!-- Publications -->
-      <section id="publications" class="section">
-        <h2><span class="emoji">🔥</span> Publications / Manuscripts</h2>
+      <!-- Research Highlights -->
+      <section id="research" class="section">
+        <h2>Research Highlights</h2>
 
-        <div class="publication-card">
-          <div class="paper-thumb gradient-thumb">
-            <span>DeepMine-Mamba</span>
-          </div>
-
-          <div class="paper-info">
-            <div class="badge">Under Preparation</div>
-
-            <h3>
-              DeepMine-Mamba: Mamba-Based Document Image Binarization with Local Detail Restoration
-            </h3>
-
-            <p class="authors">
-              <strong>Henry Chan</strong>, et al.
-            </p>
-
-            <p>
-              A document image binarization framework designed to preserve fine local structures
-              under degraded visual conditions using Mamba-based global propagation and local
-              detail restoration.
-            </p>
-
-            <div class="button-group">
-              <a href="#" class="btn"><i class="fa-solid fa-file-lines"></i> Paper</a>
-              <a href="#" class="btn"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="#" class="btn"><i class="fa-solid fa-diagram-project"></i> Project</a>
+        <div class="highlight-grid">
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-file-image"></i>
             </div>
-          </div>
-        </div>
-
-        <div class="publication-card">
-          <div class="paper-thumb gradient-thumb second">
-            <span>ReLoad-Mamba</span>
-          </div>
-
-          <div class="paper-info">
-            <div class="badge">Manuscript</div>
-
-            <h3>
-              ReLoad-Mamba: Restoring Local Detail Responses for Mamba-Based Semantic Segmentation
-            </h3>
-
-            <p class="authors">
-              <strong>Henry Chan</strong>, et al.
-            </p>
-
+            <h3>Document Image Binarization</h3>
             <p>
-              A semantic segmentation framework investigating how local detail responses can be
-              restored after long-range state space propagation in Mamba-based vision models.
+              Robust foreground extraction from degraded document images,
+              especially under low contrast, noisy background, and weak strokes.
             </p>
+          </div>
 
-            <div class="button-group">
-              <a href="#" class="btn"><i class="fa-solid fa-file-lines"></i> Paper</a>
-              <a href="#" class="btn"><i class="fa-brands fa-github"></i> Code</a>
-              <a href="#" class="btn"><i class="fa-solid fa-diagram-project"></i> Project</a>
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-wave-square"></i>
             </div>
+            <h3>Mamba-based Vision Models</h3>
+            <p>
+              Exploring state space models for efficient long-range propagation
+              in dense prediction tasks.
+            </p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-border-top-left"></i>
+            </div>
+            <h3>Local Detail Restoration</h3>
+            <p>
+              Recovering thin strokes, object boundaries, and small structures
+              after global feature propagation.
+            </p>
           </div>
         </div>
       </section>
 
+      <!-- Publications -->
+      <section id="publications" class="section">
+        <h2>Selected Research & Publications</h2>
+
+        <!-- DeepMine-Mamba -->
+        <article class="publication-card">
+          <div class="paper-visual visual-deepmine">
+            <span>DeepMine-Mamba</span>
+          </div>
+
+          <div class="paper-info">
+            <div class="paper-meta">
+              <span class="badge manuscript">Manuscript</span>
+              <span class="year">2026</span>
+            </div>
+
+            <h3>
+              DeepMine-Mamba: Mamba-Based Document Image Binarization with
+              Local Detail Restoration
+            </h3>
+
+            <p class="authors">
+              <strong>Henry Chan</strong>, et al.
+            </p>
+
+            <p>
+              A document image binarization framework designed to preserve fine
+              local structures under degraded visual conditions using Mamba-based
+              global propagation and local detail restoration.
+            </p>
+
+            <div class="button-group">
+              <a href="#" class="btn disabled">
+                <i class="fa-solid fa-file-lines"></i> Paper
+              </a>
+              <a href="#" class="btn disabled">
+                <i class="fa-brands fa-github"></i> Code
+              </a>
+              <a href="#" class="btn disabled">
+                <i class="fa-solid fa-diagram-project"></i> Project
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ReLoad-Mamba -->
+        <article class="publication-card">
+          <div class="paper-visual visual-reload">
+            <span>ReLoad-Mamba</span>
+          </div>
+
+          <div class="paper-info">
+            <div class="paper-meta">
+              <span class="badge under-review">Under Preparation</span>
+              <span class="year">2026</span>
+            </div>
+
+            <h3>
+              ReLoad-Mamba: Restoring Local Detail Responses for Mamba-Based
+              Semantic Segmentation
+            </h3>
+
+            <p class="authors">
+              <strong>Henry Chan</strong>, et al.
+            </p>
+
+            <p>
+              A semantic segmentation framework investigating how local detail
+              responses can be restored after long-range state space propagation
+              in Mamba-based vision models.
+            </p>
+
+            <div class="button-group">
+              <a href="#" class="btn disabled">
+                <i class="fa-solid fa-file-lines"></i> Paper
+              </a>
+              <a href="#" class="btn disabled">
+                <i class="fa-brands fa-github"></i> Code
+              </a>
+              <a href="#" class="btn disabled">
+                <i class="fa-solid fa-diagram-project"></i> Project
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Undergraduate / Other Work -->
+        <article class="publication-card compact">
+          <div class="paper-visual visual-other">
+            <span>Undergraduate Work</span>
+          </div>
+
+          <div class="paper-info">
+            <div class="paper-meta">
+              <span class="badge project">Project</span>
+              <span class="year">2025</span>
+            </div>
+
+            <h3>
+              Efficient Vision Models and Embedded AI Applications
+            </h3>
+
+            <p class="authors">
+              <strong>Henry Chan</strong>
+            </p>
+
+            <p>
+              Undergraduate projects and experiments involving machine learning,
+              embedded systems, and computer vision applications.
+            </p>
+
+            <div class="button-group">
+              <a href="#projects" class="btn">
+                <i class="fa-solid fa-arrow-down"></i> View Projects
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
       <!-- Projects -->
       <section id="projects" class="section">
-        <h2><span class="emoji">🛠️</span> Projects</h2>
+        <h2>Projects</h2>
 
         <div class="project-grid">
           <div class="project-card">
@@ -204,7 +339,7 @@
 
       <!-- Education -->
       <section id="education" class="section">
-        <h2><span class="emoji">🎓</span> Education</h2>
+        <h2>Education</h2>
 
         <div class="timeline">
           <div class="timeline-item">
@@ -219,7 +354,7 @@
 
       <!-- Skills -->
       <section class="section">
-        <h2><span class="emoji">💻</span> Skills</h2>
+        <h2>Skills</h2>
 
         <div class="skill-grid">
           <span>Python</span>
@@ -237,9 +372,12 @@
       <!-- Contact -->
       <section id="contact" class="section">
         <h2>Contact</h2>
+
         <p>
           Feel free to contact me by email:
-          <a href="mailto:henrychan940719@gmail.com">henrychan940719@gmail.com</a>
+          <a href="mailto:henrychan940719@gmail.com">
+            henrychan940719@gmail.com
+          </a>
         </p>
       </section>
 
