@@ -26,7 +26,6 @@ body {
   line-height: 1.75;
 }
 
-/* Top navigation */
 .topbar {
   position: sticky;
   top: 0;
@@ -52,14 +51,12 @@ body {
   font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
-  transition: color 0.2s ease;
 }
 
 .topbar a:hover {
   color: var(--primary);
 }
 
-/* Page layout */
 .page {
   max-width: 1280px;
   margin: 0 auto;
@@ -67,11 +64,6 @@ body {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 48px;
-}
-
-/* Sidebar */
-.sidebar {
-  position: relative;
 }
 
 .profile-card {
@@ -156,7 +148,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Main content */
 .content {
   min-width: 0;
 }
@@ -184,7 +175,6 @@ a:hover {
   margin-right: 8px;
 }
 
-/* Tags */
 .tag-group {
   display: flex;
   flex-wrap: wrap;
@@ -205,7 +195,6 @@ a:hover {
   border: 1px solid #dbeafe;
 }
 
-/* News */
 .news-box {
   max-height: 260px;
   overflow-y: auto;
@@ -229,7 +218,6 @@ a:hover {
   margin-right: 8px;
 }
 
-/* Publications */
 .publication-card {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -269,7 +257,6 @@ a:hover {
   color: white;
   font-size: 21px;
   font-weight: 800;
-  letter-spacing: 0.2px;
 }
 
 .paper-info h3 {
@@ -321,7 +308,6 @@ a:hover {
   transform: translateY(-1px);
 }
 
-/* Projects */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -357,7 +343,6 @@ a:hover {
   font-weight: 700;
 }
 
-/* Timeline */
 .timeline {
   border-left: 3px solid #dbeafe;
   padding-left: 22px;
@@ -390,14 +375,12 @@ a:hover {
   margin: 0;
 }
 
-/* Skills */
 .skill-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Footer */
 footer {
   text-align: center;
   color: var(--muted);
@@ -405,7 +388,6 @@ footer {
   font-size: 14px;
 }
 
-/* Responsive */
 @media screen and (max-width: 980px) {
   .page {
     grid-template-columns: 1fr;
