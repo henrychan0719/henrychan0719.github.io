@@ -412,6 +412,51 @@ a:hover {
     linear-gradient(135deg, #111827, #064e3b 52%, #334155);
 }
 
+.featured-paper {
+  background:
+    linear-gradient(90deg, rgba(236, 254, 255, 0.55), transparent 45%);
+  border-radius: 22px;
+}
+
+.venue {
+  margin: 4px 0 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.visual-resource {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(34, 211, 238, 0.95), transparent 34%),
+    radial-gradient(circle at 82% 70%, rgba(124, 58, 237, 0.75), transparent 34%),
+    linear-gradient(135deg, #020617, #164e63 50%, #312e81);
+}
+
+.visual-fornet {
+  background:
+    radial-gradient(circle at 72% 22%, rgba(251, 191, 36, 0.90), transparent 34%),
+    linear-gradient(135deg, #111827, #7c2d12 50%, #475569);
+}
+
+.visual-atv {
+  background:
+    radial-gradient(circle at 24% 25%, rgba(16, 185, 129, 0.92), transparent 34%),
+    radial-gradient(circle at 80% 72%, rgba(59, 130, 246, 0.70), transparent 34%),
+    linear-gradient(135deg, #0f172a, #064e3b 50%, #1e3a8a);
+}
+
+.visual-gmamba {
+  background:
+    radial-gradient(circle at 75% 25%, rgba(14, 165, 233, 0.95), transparent 34%),
+    radial-gradient(circle at 25% 75%, rgba(168, 85, 247, 0.78), transparent 34%),
+    linear-gradient(135deg, #111827, #1e1b4b 50%, #334155);
+}
+
+.badge.accepted {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
 .paper-meta {
   display: flex;
   align-items: center;
