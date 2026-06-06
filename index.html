@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Henry Chan</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 </head>
 
 <body>
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#news">News</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <div class="container">
-    <aside>
-      <img src="profile.jpg" class="profile">
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <nav>
+      <a href="#home">Homepage</a>
+      <a href="#about">About Me</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      <h1>Henry Chan</h1>
-      <p>Undergraduate Student</p>
-      <p>Department of Electrical Engineering</p>
-      <p>Tamkang University</p>
+  <div class="page" id="home">
 
-      <hr>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-card">
+        <img src="profile.jpg" alt="Henry Chan" class="profile-img" />
 
-      <p><b>Research Interests</b></p>
-      <p>Computer Vision</p>
-      <p>Document Image Analysis</p>
-      <p>Semantic Segmentation</p>
-      <p>Mamba-based Models</p>
+        <h1>Henry Chan</h1>
+        <p class="subtitle">Undergraduate Student</p>
+        <p class="affiliation">
+          Department of Electrical Engineering<br />
+          Tamkang University
+        </p>
 
-      <hr>
+        <div class="focus-box">
+          <p>Now focusing on</p>
+          <strong>Document Image Analysis</strong><br />
+          <strong>Mamba-based Vision Models</strong>
+        </div>
 
-      <p>📍 New Taipei, Taiwan</p>
-      <p>📧 henrychan940719@gmail.com</p>
-      <p>💻 GitHub</p>
+        <ul class="social-list">
+          <li><i class="fa-solid fa-location-dot"></i> New Taipei, Taiwan</li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:henrychan940719@gmail.com">Email</a></li>
+          <li><i class="fa-brands fa-github"></i> <a href="https://github.com/henrychan0719" target="_blank">GitHub</a></li>
+          <li><i class="fa-brands fa-linkedin"></i> <a href="#" target="_blank">LinkedIn</a></li>
+          <li><i class="fa-solid fa-graduation-cap"></i> <a href="#" target="_blank">Google Scholar</a></li>
+          <li><i class="fa-brands fa-orcid"></i> <a href="#" target="_blank">ORCID</a></li>
+        </ul>
+      </div>
     </aside>
 
-    <main>
-      <section id="about">
+    <!-- Main Content -->
+    <main class="content">
+
+      <!-- About -->
+      <section id="about" class="section">
         <h2>About Me</h2>
+
         <p>
           I am currently an undergraduate student in the Department of Electrical Engineering
           at Tamkang University, Taiwan. My research interests include computer vision,
@@ -50,54 +75,180 @@
 
         <p>
           I am currently working on Mamba-based models for document image binarization
-          and semantic segmentation, with a focus on restoring fine local structures
-          and improving robustness under degraded visual conditions.
+          and semantic segmentation, with a focus on restoring fine local structures,
+          improving robustness under degraded visual conditions, and designing efficient
+          dense prediction models.
         </p>
-      </section>
 
-      <section id="news">
-        <h2>News</h2>
-        <ul>
-          <li><b>2026.06:</b> Personal academic website launched.</li>
-          <li><b>2026.06:</b> DeepMine-Mamba manuscript is under preparation.</li>
-          <li><b>2026.05:</b> Started experiments on document image binarization.</li>
-        </ul>
-      </section>
-
-      <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="paper">
-          <h3>DeepMine-Mamba</h3>
-          <p>
-            Mamba-based document image binarization model with local detail restoration.
-          </p>
-          <p><i>Manuscript under preparation</i></p>
-        </div>
-
-        <div class="paper">
-          <h3>ReLoad-Mamba</h3>
-          <p>
-            Restoring local detail responses for Mamba-based semantic segmentation.
-          </p>
-          <p><i>Manuscript under preparation</i></p>
+        <div class="tag-group">
+          <span>Computer Vision</span>
+          <span>Document Image Analysis</span>
+          <span>Semantic Segmentation</span>
+          <span>Mamba / State Space Models</span>
+          <span>PyTorch</span>
         </div>
       </section>
 
-      <section id="education">
-        <h2>Education</h2>
-        <p>
-          <b>Tamkang University</b><br>
-          B.S. in Electrical Engineering<br>
-          2023.09 – Present
-        </p>
+      <!-- News -->
+      <section id="news" class="section">
+        <h2><span class="emoji">📢</span> News</h2>
+
+        <div class="news-box">
+          <ul>
+            <li><strong>2026.06</strong> Personal academic website launched.</li>
+            <li><strong>2026.06</strong> DeepMine-Mamba manuscript is under preparation.</li>
+            <li><strong>2026.05</strong> Started experiments on DIBCO document binarization benchmarks.</li>
+            <li><strong>2026.04</strong> Proposed ReLoad-Mamba for Mamba-based semantic segmentation.</li>
+            <li><strong>2025.08</strong> Completed ML2021 machine learning assignments.</li>
+          </ul>
+        </div>
       </section>
 
-      <section id="contact">
+      <!-- Publications -->
+      <section id="publications" class="section">
+        <h2><span class="emoji">🔥</span> Publications / Manuscripts</h2>
+
+        <div class="publication-card">
+          <div class="paper-thumb gradient-thumb">
+            <span>DeepMine-Mamba</span>
+          </div>
+
+          <div class="paper-info">
+            <div class="badge">Under Preparation</div>
+
+            <h3>
+              DeepMine-Mamba: Mamba-Based Document Image Binarization with Local Detail Restoration
+            </h3>
+
+            <p class="authors">
+              <strong>Henry Chan</strong>, et al.
+            </p>
+
+            <p>
+              A document image binarization framework designed to preserve fine local structures
+              under degraded visual conditions using Mamba-based global propagation and local
+              detail restoration.
+            </p>
+
+            <div class="button-group">
+              <a href="#" class="btn"><i class="fa-solid fa-file-lines"></i> Paper</a>
+              <a href="#" class="btn"><i class="fa-brands fa-github"></i> Code</a>
+              <a href="#" class="btn"><i class="fa-solid fa-diagram-project"></i> Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card">
+          <div class="paper-thumb gradient-thumb second">
+            <span>ReLoad-Mamba</span>
+          </div>
+
+          <div class="paper-info">
+            <div class="badge">Manuscript</div>
+
+            <h3>
+              ReLoad-Mamba: Restoring Local Detail Responses for Mamba-Based Semantic Segmentation
+            </h3>
+
+            <p class="authors">
+              <strong>Henry Chan</strong>, et al.
+            </p>
+
+            <p>
+              A semantic segmentation framework investigating how local detail responses can be
+              restored after long-range state space propagation in Mamba-based vision models.
+            </p>
+
+            <div class="button-group">
+              <a href="#" class="btn"><i class="fa-solid fa-file-lines"></i> Paper</a>
+              <a href="#" class="btn"><i class="fa-brands fa-github"></i> Code</a>
+              <a href="#" class="btn"><i class="fa-solid fa-diagram-project"></i> Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <h2><span class="emoji">🛠️</span> Projects</h2>
+
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Arduino Traffic Light System</h3>
+            <p>
+              Designed and implemented a traffic light controller using Arduino,
+              including timing control, LED output, and basic embedded system logic.
+            </p>
+            <span class="project-tag">Embedded System</span>
+          </div>
+
+          <div class="project-card">
+            <h3>IoT and Robotics Big Data Report</h3>
+            <p>
+              Conducted technical analysis and literature review on IoT, robotics,
+              and big data applications.
+            </p>
+            <span class="project-tag">IoT</span>
+          </div>
+
+          <div class="project-card">
+            <h3>ML2021 Assignments</h3>
+            <p>
+              Completed machine learning assignments covering regression,
+              classification, neural networks, and image recognition using PyTorch.
+            </p>
+            <span class="project-tag">Machine Learning</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="section">
+        <h2><span class="emoji">🎓</span> Education</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">2023.09 – Present</div>
+            <div>
+              <h3>Tamkang University</h3>
+              <p>B.S. in Electrical Engineering</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="section">
+        <h2><span class="emoji">💻</span> Skills</h2>
+
+        <div class="skill-grid">
+          <span>Python</span>
+          <span>PyTorch</span>
+          <span>OpenCV</span>
+          <span>C / C++</span>
+          <span>LaTeX</span>
+          <span>Git</span>
+          <span>Deep Learning</span>
+          <span>Semantic Segmentation</span>
+          <span>Document Binarization</span>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section">
         <h2>Contact</h2>
-        <p>Email: henrychan940719@gmail.com</p>
+        <p>
+          Feel free to contact me by email:
+          <a href="mailto:henrychan940719@gmail.com">henrychan940719@gmail.com</a>
+        </p>
       </section>
+
+      <footer>
+        <p>© 2026 Henry Chan. Hosted by GitHub Pages.</p>
+      </footer>
+
     </main>
   </div>
+
 </body>
 </html>
