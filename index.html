@@ -11,6 +11,46 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
+
+
+  <style>
+    /* Clean paper preview image style */
+    .publication-card {
+      align-items: flex-start;
+    }
+
+    .paper-visual.paper-figure {
+      width: 230px;
+      height: 145px;
+      flex-shrink: 0;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    }
+
+    .paper-visual.paper-figure .paper-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .paper-visual.paper-figure {
+        width: 100%;
+        height: 180px;
+        margin-bottom: 18px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -190,8 +230,8 @@
     
       <!-- Breaking the Resource Wall -->
       <article class="publication-card featured-paper">
-        <div class="paper-visual visual-fornet">
-          <img src="dgmnet.png" alt="DGM-Net" class="paper-img">
+        <div class="paper-visual paper-figure">
+          <img src="dgmnet.png" alt="DGM-Net architecture" class="paper-img">
         </div>
     
         <div class="paper-info">
@@ -233,8 +273,8 @@
     
       <!-- FoR-Net -->
       <article class="publication-card">
-        <div class="paper-visual visual-fornet">
-          <img src="fornet.png" alt="FoR-Net" class="paper-img">
+        <div class="paper-visual paper-figure">
+          <img src="fornet.png" alt="FoR-Net architecture" class="paper-img">
         </div>
     
         <div class="paper-info">
