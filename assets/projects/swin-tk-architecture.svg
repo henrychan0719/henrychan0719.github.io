@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1190" viewBox="0 0 1400 1190" role="img" aria-labelledby="title desc">
+<title id="title">Swin-TK architecture: feature and positive-state propagation</title>
+<desc id="desc">A convolutional and four-stage Swin encoder supplies five matched-scale skip features. The decoder propagates features and a positive state P through five coarse-to-fine stages. Its final feature predicts 14 segmentation logits, and its final P produces a single-channel uncertainty score. Insets describe encoder attention control and the decoder gain update. Redrawn from report Sections 3.1 through 3.4.</desc>
+<defs>
+<marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#3759B8"/></marker>
+<marker id="teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#087F81"/></marker>
+<marker id="gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#98A5B8"/></marker>
+</defs><rect width="1400" height="1190" fill="#ffffff"/>
+<text x="36" y="51" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#17263D" text-anchor="start">Swin-TK</text>
+<text x="221" y="50" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#728096" text-anchor="start">Swin-TransKalman</text>
+<text x="37" y="83" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#728096" text-anchor="start">3D segmentation with structured feature fusion and a propagated positive state</text>
+<rect x="32" y="115" width="1336" height="630" rx="17" fill="#FAFBFD" stroke="#E1E7EF" stroke-width="1.5"/>
+<text x="60" y="153" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#3759B8" text-anchor="start">01  MULTI-SCALE ENCODING</text>
+<text x="685" y="153" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#3759B8" text-anchor="start">02  COARSE-TO-FINE DECODING</text>
+<text x="1082" y="153" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#3759B8" text-anchor="start">03  DUAL OUTPUTS</text>
+<rect x="60" y="191" width="360" height="56" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="240.0" y="216.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">3D CT input</text>
+<text x="240.0" y="237.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">Example patch: 96 × 96 × 96</text>
+<path d="M 240 247 L 240 276" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 60 219 L 44 219 L 44 352 L 60 352" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<rect x="60" y="276" width="360" height="48" rx="9" fill="#F2F5FD" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="240.0" y="297.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Full-resolution convolution</text>
+<text x="240.0" y="318.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">enc0 · 96³ × 48</text>
+<rect x="60" y="335" width="360" height="303" rx="12" fill="#ECF1FC" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="80" y="359" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#3759B8" text-anchor="start">Swin encoder · 4 stages × 2 blocks</text>
+<rect x="80" y="368" width="320" height="44" rx="9" fill="#FFFFFF" stroke="#D3DDF1" stroke-width="1.5"/>
+<text x="240.0" y="396.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">enc1   ·   48³ × 48</text>
+<rect x="80" y="438" width="320" height="44" rx="9" fill="#FFFFFF" stroke="#D3DDF1" stroke-width="1.5"/>
+<text x="240.0" y="466.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">enc2   ·   24³ × 96</text>
+<rect x="80" y="508" width="320" height="44" rx="9" fill="#FFFFFF" stroke="#D3DDF1" stroke-width="1.5"/>
+<text x="240.0" y="536.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">enc3   ·   12³ × 192</text>
+<rect x="80" y="578" width="320" height="44" rx="9" fill="#FFFFFF" stroke="#D3DDF1" stroke-width="1.5"/>
+<text x="240.0" y="606.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">hs[3]   ·   6³ × 384</text>
+<path d="M 420 300 L 685 300" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="527" y="290" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="middle">skip observation e</text>
+<rect x="685" y="276" width="280" height="48" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="825.0" y="297.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">D1  ·  Kalman fusion</text>
+<text x="825.0" y="318.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">96³ × 48</text>
+<path d="M 400 390 L 685 390" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="527" y="380" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="middle">skip observation e</text>
+<rect x="685" y="366" width="280" height="48" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="825.0" y="387.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">D2  ·  Kalman fusion</text>
+<text x="825.0" y="408.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">48³ × 48</text>
+<path d="M 400 460 L 685 460" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="527" y="450" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="middle">skip observation e</text>
+<rect x="685" y="436" width="280" height="48" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="825.0" y="457.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">D3  ·  Kalman fusion</text>
+<text x="825.0" y="478.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">24³ × 96</text>
+<path d="M 400 530 L 685 530" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="527" y="520" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="middle">skip observation e</text>
+<rect x="685" y="506" width="280" height="48" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="825.0" y="527.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">D4  ·  Kalman fusion</text>
+<text x="825.0" y="548.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">12³ × 192</text>
+<path d="M 400 600 L 685 600" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="527" y="590" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="middle">skip observation e</text>
+<rect x="685" y="576" width="280" height="48" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="825.0" y="597.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">D5  ·  Kalman fusion</text>
+<text x="825.0" y="618.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">6³ × 384</text>
+<path d="M 760 366 L 760 324" fill="none" stroke="#3759B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 907 366 L 907 324" fill="none" stroke="#087F81" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<path d="M 760 436 L 760 414" fill="none" stroke="#3759B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 907 436 L 907 414" fill="none" stroke="#087F81" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<path d="M 760 506 L 760 484" fill="none" stroke="#3759B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 907 506 L 907 484" fill="none" stroke="#087F81" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<path d="M 760 576 L 760 554" fill="none" stroke="#3759B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 907 576 L 907 554" fill="none" stroke="#087F81" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="744" y="347" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#3759B8" text-anchor="start">x</text>
+<text x="919" y="347" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#087F81" text-anchor="start">P</text>
+<rect x="445" y="679" width="380" height="48" rx="9" fill="#E8EEFC" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="635.0" y="700.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Bottleneck features</text>
+<text x="635.0" y="721.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">3³ × 768</text>
+<path d="M 240 638 L 240 703 L 445 703" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 760 679 L 760 624" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 825 703 L 907 703 L 907 624" fill="none" stroke="#087F81" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="925" y="683" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600" fill="#087F81" text-anchor="start">Initialize P</text>
+<text x="925" y="706" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#087F81" text-anchor="start">softplus(W₀ x)</text>
+<path d="M 965 290 L 1082 290" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<rect x="1082" y="251" width="262" height="78" rx="9" fill="#EFF3FE" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="1213.0" y="287.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Segmentation head</text>
+<text x="1213.0" y="308.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">14 logits → organ labels</text>
+<path d="M 965 313 L 1015 313 L 1015 421 L 1082 421" fill="none" stroke="#087F81" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<rect x="1082" y="382" width="262" height="78" rx="9" fill="#EAF7F5" stroke="#A0D4D0" stroke-width="1.5"/>
+<text x="1213.0" y="418.0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#087F81" text-anchor="middle">Positive-state readout</text>
+<text x="1213.0" y="439.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#087F81" text-anchor="middle">P → s → σ = exp(s / 2)</text>
+<text x="1086" y="488" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="start">Single-channel uncertainty score</text>
+<text x="1086" y="510" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="start">Both outputs in one forward pass</text>
+<path d="M 1086 560 L 1121 560" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<text x="1133" y="565" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Feature stream x</text>
+<path d="M 1086 592 L 1121 592" fill="none" stroke="#087F81" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="1133" y="597" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Positive state P</text>
+<path d="M 1086 624 L 1121 624" fill="none" stroke="#98A5B8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gray)" stroke-dasharray="6 5"/>
+<text x="1133" y="629" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Encoder skip</text>
+<rect x="32" y="769" width="643" height="346" rx="14" fill="#F7F9FF" stroke="#D9E2F4" stroke-width="1.5"/>
+<text x="54" y="803" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#3759B8" text-anchor="start">ENCODER BLOCK  /  information control</text>
+<rect x="55" y="833" width="259" height="77" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="184.5" y="868.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Window attention</text>
+<text x="184.5" y="889.5" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">Temperature τ + log-state bias −μℓⱼ</text>
+<rect x="362" y="833" width="290" height="77" rx="9" fill="#E8EEFC" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="507.0" y="868.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Kalman-style gate</text>
+<text x="507.0" y="889.5" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#17263D" text-anchor="middle">Mix old feature x and branch y</text>
+<path d="M 314 871 L 362 871" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<path d="M 507 910 L 507 931 L 184 931 L 184 946" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<rect x="55" y="946" width="259" height="51" rx="9" fill="#FFFFFF" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="184.5" y="977.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">MLP branch</text>
+<rect x="362" y="946" width="290" height="51" rx="9" fill="#E8EEFC" stroke="#B8C8EA" stroke-width="1.5"/>
+<text x="507.0" y="977.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D" text-anchor="middle">Kalman-style gate</text>
+<path d="M 314 971 L 362 971" fill="none" stroke="#3759B8" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
+<text x="55" y="1030" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D">Both residual additions:  x<tspan baseline-shift="sub" font-size="13">new</tspan><tspan> = x + K ⊙ (y − x)</tspan></text>
+<text x="55" y="1059" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#728096" text-anchor="start">K = P / (P + R); encoder P is learned per channel.</text>
+<text x="55" y="1086" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Log-state ℓ propagates across blocks; it is distinct from decoder P.</text>
+<rect x="698" y="769" width="670" height="346" rx="14" fill="#F5FAFA" stroke="#D4E8E5" stroke-width="1.5"/>
+<text x="720" y="803" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#087F81" text-anchor="start">DECODER CELL  /  repeat at all five scales</text>
+<text x="720" y="839" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#087F81" text-anchor="start">PREDICT</text>
+<text x="1063" y="839" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#087F81" text-anchor="start">OBSERVE</text>
+<text x="720" y="867" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#17263D" text-anchor="start">x⁻ = T(x)</text>
+<text x="720" y="895" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#17263D" text-anchor="start">P⁻ = softplus(Wₚ U(P)) + softplus(q)</text>
+<text x="1063" y="867" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#17263D" text-anchor="start">z = Wz e</text>
+<text x="1063" y="895" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#17263D" text-anchor="start">R = softplus(Wᵣ e) + ε</text>
+<text x="720" y="920" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="start">T: transposed convolution   ·   U: trilinear upsampling</text>
+<rect x="719" y="941" width="628" height="81" rx="9" fill="#E2F2EF" stroke="#B8DBD6" stroke-width="1.5"/>
+<text x="737" y="969" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#087F81" text-anchor="start">GAIN</text>
+<text x="804" y="969" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="#087F81" text-anchor="start">K = P⁻ / (P⁻ + R)</text>
+<text x="737" y="1001" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#17263D" text-anchor="start">x⁺ = x⁻ + K ⊙ (z − x⁻)</text>
+<text x="1080" y="1001" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#087F81" text-anchor="start">P⁺ = (1 − K) ⊙ P⁻</text>
+<text x="720" y="1053" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#17263D">Refine:  x<tspan baseline-shift="sub" font-size="13">out</tspan><tspan> = φ(Concat(x⁺, mean</tspan><tspan baseline-shift="sub" font-size="13">channel</tspan><tspan>(P⁺)))</tspan></text>
+<text x="720" y="1082" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Pass refined features and P⁺ to the next, finer decoder scale.</text>
+<text x="36" y="1150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#728096" text-anchor="start">Schematic redrawn from report §§3.1–3.4. Tensor sizes are spatial size × channels for a 96³ patch.</text>
+<text x="36" y="1175" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#728096" text-anchor="start">P is a learned positive fusion state. Recursion follows network scales, not physical time; σ is evaluated as an error-ranking score.</text>
+</svg>
