@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://henrychan0719.github.io/sitemap.xml

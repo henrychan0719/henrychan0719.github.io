@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+
+  <meta name="description" content="DGM-Net combines Mamba-based context modeling with lightweight feature fusion for semantic segmentation. Explore the architecture, results, and code." />
+  <title>DGM-Net | Sheng-Wei Chan</title>
+  <link rel="canonical" href="https://henrychan0719.github.io/dgm-net.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Breaking the Resource Wall: Geometry-Guided Sequence Modeling for Efficient Semantic Segmentation" />
+  <meta property="og:description" content="DGM-Net combines Mamba-based context modeling with lightweight feature fusion for semantic segmentation. Explore the architecture, results, and code." />
+  <meta property="og:url" content="https://henrychan0719.github.io/dgm-net.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/dgmnet.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Breaking the Resource Wall: Geometry-Guided Sequence Modeling for Efficient Semantic Segmentation",
+    "author": [{"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Chun-Po Shen"}, {"@type": "Person", "name": "Chia-Min Lin"}, {"@type": "Person", "name": "Yung-Che Wang"}, {"@type": "Person", "name": "Jen-Shiun Chiang"}],
+    "datePublished": "2026",
+    "url": "https://henrychan0719.github.io/dgm-net.html",
+    "isPartOf": { "@type": "Periodical", "name": "arXiv" }
+  }
+  </script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="paper-page">
+
+    <a href="index.html#publications" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span lang="en">All publications</span><span lang="zh-Hant">回到論文列表</span>
+    </a>
+
+    <header class="paper-header">
+      <div class="paper-meta">
+        <span class="badge" lang="en">Under review</span>
+        <span class="badge" lang="zh-Hant">審查中</span>
+        <span class="area-label" lang="en">Semantic Segmentation</span>
+        <span class="area-label" lang="zh-Hant">語意分割</span>
+      </div>
+
+      <h1>Breaking the Resource Wall: Geometry-Guided Sequence Modeling for Efficient Semantic Segmentation</h1>
+
+      <p class="authors"><strong>Sheng-Wei Chan</strong>, Hsin-Jui Pan, Chun-Po Shen, Chia-Min Lin, Yung-Che Wang, Jen-Shiun Chiang</p>
+
+      <p class="venue" lang="en">Submitted to <em>Image and Vision Computing</em>, 2026.</p>
+      <p class="venue" lang="zh-Hant">投稿至 <em>Image and Vision Computing</em>，2026。</p>
+
+      <div class="button-group">
+          <a href="https://arxiv.org/abs/2604.23399" class="btn" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines"></i> arXiv</a>
+          <a href="https://github.com/henrychan0719/DGM-Net" class="btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> <span lang="en">Code</span><span lang="zh-Hant">程式碼</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <figure class="paper-figure">
+        <a data-enlarge href="dgmnet.png"><img loading="lazy" decoding="async" width="1140" height="480" src="dgmnet.png" alt="DGM-Net architecture" /></a>
+        <figcaption lang="en">DGM-Net: an encoder–decoder built around the Cascade Geometric Navigation SSM.</figcaption>
+        <figcaption lang="zh-Hant">DGM-Net：以 Cascade Geometric Navigation SSM 為核心的編碼器–解碼器架構。</figcaption>
+      </figure>
+
+      <div class="tldr">
+        <h2><span lang="en">In short</span><span lang="zh-Hant">重點</span></h2>
+        <p lang="en">Sequence models scan an image in a fixed raster order that has nothing to do with where objects actually are. DGM-Net predicts geometric fields from the features and uses them to steer the scan, reaching 80.8% mIoU on Cityscapes with 53M parameters and retaining 79.8% under an 8 GB memory budget.</p>
+        <p lang="zh-Hant">序列模型以固定的光柵順序掃描影像，而這個順序跟物件實際的位置毫無關係。DGM-Net 從特徵中預測幾何場，並以此引導掃描路徑，在 Cityscapes 上以 53M 參數達到 80.8% mIoU，在 8 GB 記憶體限制下仍維持 79.8%。</p>
+      </div>
+
+      <section class="paper-section">
+        <h2><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h2>
+        <div lang="en">
+          <p>High-accuracy segmentation has largely been bought with bigger backbones and bigger
+            GPUs. Transformers model global context well, but self-attention costs O(N&sup2;) in the
+            number of pixels, which becomes punishing at 1024&nbsp;&times;&nbsp;1024 and above.</p>
+          <p>State space models like Mamba offer the same global reach at O(N). But visual SSMs scan
+            in fixed, isotropic patterns that are agnostic to image structure. Information diffuses
+            across object boundaries — semantic leakage — and thin structures such as poles and
+            fences get smoothed away.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>高準確度的分割，長期以來是靠更大的骨幹網路與更大的顯卡換來的。Transformer 能有效建模全域上下文，
+            但自注意力的成本隨像素數呈 O(N&sup2;) 成長，在 1024&nbsp;&times;&nbsp;1024 以上的解析度代價極高。</p>
+          <p>Mamba 這類狀態空間模型能以 O(N) 提供同樣的全域視野，但視覺 SSM 採用的是固定且各向同性的掃描模式，
+            完全不理會影像本身的結構。結果是資訊跨越物件邊界擴散——也就是語義洩漏——而電線桿、柵欄這類細長結構
+            則被平滑掉。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">The idea</span><span lang="zh-Hant">作法</span></h2>
+        <div lang="en">
+          <p>If the scan is going to be sequential anyway, it should follow the geometry of the scene
+            rather than the geometry of the pixel grid. The DGM-Module predicts four geometric priors
+            directly from the features:</p>
+          <ul>
+            <li><strong>V-map</strong> — a centripetal potential field indicating distance to object centres.</li>
+            <li><strong>Flow field &Phi;</strong> — first-derivative gradients of the V-map, pointing toward centroids.</li>
+            <li><strong>Curv-map</strong> — Laplacian-based anchors marking corners and junctions.</li>
+            <li><strong>D-map</strong> — a morphological prior focused on the skeletons of slender structures.</li>
+          </ul>
+          <p>These become a soft geometric prompt that reweights the features before the selective scan,
+            so recurrent state concentrates on structurally critical regions instead of spreading evenly.
+            The context head is a three-layer Cascade G-Mamba: the first two layers scan four ways to
+            establish <em>what</em> is in the scene, and the third applies geometric navigation to
+            settle <em>where</em> the boundaries are. A GOAD decoder then warps low-level features along
+            the predicted flow to fix the misalignment that normally blurs upsampled boundaries. The
+            G-Mamba operator introduced here is examined on its own in a
+            <a href="g-mamba.html">separate transfer study</a>.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>既然掃描終究是循序的，那它就應該依循場景的幾何，而不是像素網格的幾何。
+            DGM-Module 直接從特徵預測四種幾何先驗：</p>
+          <ul>
+            <li><strong>V-map</strong>——向心位能場，表示各點到物件中心的距離。</li>
+            <li><strong>Flow field &Phi;</strong>——V-map 的一階導數梯度，指向物件重心。</li>
+            <li><strong>Curv-map</strong>——基於拉普拉斯運算的結構錨點，標記轉角與交界。</li>
+            <li><strong>D-map</strong>——形態學先驗，聚焦於細長結構的骨架。</li>
+          </ul>
+          <p>這些先驗會組成一個柔性的幾何提示，在選擇性掃描之前重新加權特徵，
+            讓遞迴狀態集中在結構關鍵的區域，而不是平均分散。上下文模組是三層的 Cascade G-Mamba：
+            前兩層做四方向掃描，先確立場景中<em>有什麼</em>；第三層才施加幾何導航，判斷邊界<em>在哪裡</em>。
+            接著 GOAD 解碼器沿著預測的流場對低階特徵做扭曲對齊，修正上採樣通常會造成的邊界模糊。
+            本文提出的 G-Mamba 運算子，另有一篇<a href="g-mamba.html">獨立的遷移分析</a>單獨檢驗其效果。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">Results</span><span lang="zh-Hant">實驗結果</span></h2>
+        <div class="table-wrap" lang="en">
+          <table class="data">
+            <caption>Cityscapes validation set. Params in millions, GFLOPs at 512&times;512.</caption>
+            <thead><tr><th>Model</th><th>Params</th><th>GFLOPs</th><th>mIoU (SS)</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>84.74</td><td>348.0</td><td>79.55</td></tr>
+              <tr><td>OCRNet</td><td>70.41</td><td>325.0</td><td>81.8</td></tr>
+              <tr><td>DANet</td><td>66.47</td><td>289.0</td><td>78.8</td></tr>
+              <tr><td>CCNet</td><td>66.13</td><td>276.0</td><td>80.5</td></tr>
+              <tr class="ours"><td>DGM-Net (ours)</td><td>53.00</td><td>224.1</td><td>80.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" lang="zh-Hant">
+          <table class="data">
+            <caption>Cityscapes 驗證集。參數量單位為百萬，GFLOPs 於 512&times;512 解析度量測。</caption>
+            <thead><tr><th>模型</th><th>參數量</th><th>GFLOPs</th><th>mIoU（單尺度）</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>84.74</td><td>348.0</td><td>79.55</td></tr>
+              <tr><td>OCRNet</td><td>70.41</td><td>325.0</td><td>81.8</td></tr>
+              <tr><td>DANet</td><td>66.47</td><td>289.0</td><td>78.8</td></tr>
+              <tr><td>CCNet</td><td>66.13</td><td>276.0</td><td>80.5</td></tr>
+              <tr class="ours"><td>DGM-Net (ours)</td><td>53.00</td><td>224.1</td><td>80.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p lang="en">With multi-scale testing the same model reaches 82.3% mIoU, and it transfers to ADE20K at 45.24% mIoU using the identical configuration — no dataset-specific tuning of the geometric priors.</p>
+        <p lang="zh-Hant">在多尺度測試下，同一個模型可達 82.3% mIoU；沿用完全相同的設定遷移到 ADE20K 時為 45.24% mIoU——幾何先驗沒有針對資料集另做調整。</p>
+
+        <div class="table-wrap" lang="en">
+          <table class="data">
+            <caption>Under a single 8 GB GPU. Baselines must shrink the crop size to fit.</caption>
+            <thead><tr><th>Model</th><th>Max crop</th><th>Batch</th><th>mIoU</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>641&times;641</td><td>2</td><td>77.43</td></tr>
+              <tr><td>PSPNet</td><td>641&times;641</td><td>2</td><td>77.31</td></tr>
+              <tr class="ours"><td>DGM-Net (ours)</td><td>768&times;768</td><td>2</td><td>79.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" lang="zh-Hant">
+          <table class="data">
+            <caption>單張 8 GB 顯卡的限制下。基線模型必須縮小裁切尺寸才能塞得進去。</caption>
+            <thead><tr><th>模型</th><th>最大裁切</th><th>Batch</th><th>mIoU</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>641&times;641</td><td>2</td><td>77.43</td></tr>
+              <tr><td>PSPNet</td><td>641&times;641</td><td>2</td><td>77.31</td></tr>
+              <tr class="ours"><td>DGM-Net (ours)</td><td>768&times;768</td><td>2</td><td>79.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p lang="en">This is the result the title refers to. Linear memory complexity lets DGM-Net keep a 768&times;768 crop where attention-based heads have to drop to 641&times;641 to avoid running out of memory, so it sees more context and scores higher on hardware typical of a single-GPU lab.</p>
+        <p lang="zh-Hant">這正是論文標題所指的結果。線性的記憶體複雜度讓 DGM-Net 能維持 768&times;768 的裁切尺寸，而基於注意力的上下文模組必須降到 641&times;641 才不會爆記憶體——因此 DGM-Net 看到更多上下文，並在單卡實驗室常見的硬體上取得更高的分數。</p>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">What each part contributes</span><span lang="zh-Hant">各模組的貢獻</span></h2>
+        <div class="table-wrap" lang="en">
+          <table class="data">
+            <caption>Incremental ablation on Cityscapes, starting from a plain ResNet-101.</caption>
+            <thead><tr><th>Configuration</th><th>mIoU</th><th>Gain</th></tr></thead>
+            <tbody>
+              <tr><td>Baseline (ResNet-101)</td><td>74.20</td><td>—</td></tr>
+              <tr><td>+ DGM-Module</td><td>77.50</td><td>+3.30</td></tr>
+              <tr><td>+ Standard Mamba</td><td>79.45</td><td>+1.95</td></tr>
+              <tr><td>+ G-Mamba (single)</td><td>80.11</td><td>+0.66</td></tr>
+              <tr><td>+ Cascade G-Mamba</td><td>80.80</td><td>+0.69</td></tr>
+              <tr class="ours"><td>+ Multi-scale testing</td><td>82.30</td><td>+1.50</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" lang="zh-Hant">
+          <table class="data">
+            <caption>Cityscapes 上的逐步消融實驗，從純 ResNet-101 開始。</caption>
+            <thead><tr><th>設定</th><th>mIoU</th><th>增益</th></tr></thead>
+            <tbody>
+              <tr><td>Baseline (ResNet-101)</td><td>74.20</td><td>—</td></tr>
+              <tr><td>+ DGM-Module</td><td>77.50</td><td>+3.30</td></tr>
+              <tr><td>+ Standard Mamba</td><td>79.45</td><td>+1.95</td></tr>
+              <tr><td>+ G-Mamba (single)</td><td>80.11</td><td>+0.66</td></tr>
+              <tr><td>+ Cascade G-Mamba</td><td>80.80</td><td>+0.69</td></tr>
+              <tr class="ours"><td>+ Multi-scale testing</td><td>82.30</td><td>+1.50</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">Where the gains land</span><span lang="zh-Hant">增益落在哪裡</span></h2>
+        <div lang="en">
+          <p>Extending training from 28k to 90k iterations does not improve every class evenly. The
+            largest gains show up exactly where the architecture was aimed: wall (+2.50), fence
+            (+1.87), pole (+1.20), traffic light (+1.09) — thin, boundary-sensitive structures — while
+            road and sky barely move.</p>
+          <p>The complexity curve also stays flat. At 1024&nbsp;&times;&nbsp;2048, DGM-Net needs 1,792
+            GFLOPs against OCRNet's 2,342, a 23.5% reduction, and inference runs at 53.5 FPS at
+            1024&nbsp;&times;&nbsp;1024 on an RTX 5080.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>把訓練從 28k 迭代延長到 90k，各類別的進步幅度並不平均。增益最大的地方，恰好就是這個架構瞄準的地方：
+            牆面（+2.50）、柵欄（+1.87）、電線桿（+1.20）、紅綠燈（+1.09）——都是細長且對邊界敏感的結構——
+            而道路與天空幾乎沒有變化。</p>
+          <p>複雜度曲線也維持平緩。在 1024&nbsp;&times;&nbsp;2048 解析度下，DGM-Net 需要 1,792 GFLOPs，
+            相對於 OCRNet 的 2,342 減少了 23.5%；在 RTX 5080 上，1024&nbsp;&times;&nbsp;1024 的推論速度為 53.5 FPS。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">Limitations</span><span lang="zh-Hant">限制</span></h2>
+        <p lang="en">The centripetal flow field assumes objects have well-defined geometric centres, so it helps less on large “stuff” regions like sky, road, and vegetation. SSM aggregation also retains an intrinsic smoothing behaviour, so extremely sparse high-frequency detail is still hard. And because the model is trained without large-scale segmentation pretraining, how far it scales in a big-data regime remains open.</p>
+        <p lang="zh-Hant">向心流場假設物件具有明確的幾何中心，因此在天空、道路、植被這類大面積的「stuff」區域幫助較小。SSM 的聚合本身也保有平滑化的傾向，所以極度稀疏的高頻細節仍然難以處理。此外，由於模型並未使用大規模分割預訓練，它在大數據條件下能擴展到什麼程度，仍是未知數。</p>
+      </section>
+
+      <section class="paper-section">
+        <div class="section-head">
+          <h2><span lang="en">Cite</span><span lang="zh-Hant">引用</span></h2>
+          <button type="button" class="copy-btn" data-copy-target="bibtex">
+            <i class="fa-regular fa-copy"></i>
+            <span lang="en">Copy BibTeX</span><span lang="zh-Hant">複製 BibTeX</span>
+          </button>
+        </div>
+        <div class="bibtex" id="bibtex">@article{chan2026dgmnet,
+  title   = {Breaking the Resource Wall: Geometry-Guided Sequence Modeling
+             for Efficient Semantic Segmentation},
+  author  = {Chan, Sheng-Wei and Pan, Hsin-Jui and Shen, Chun-Po and
+             Lin, Chia-Min and Wang, Yung-Che and Chiang, Jen-Shiun},
+  journal = {arXiv preprint arXiv:2604.23399},
+  year    = {2026}
+}</div>
+      </section>
+
+    </main>
+
+    <footer class="paper-footer">
+      <a href="index.html#publications" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span lang="en">All publications</span><span lang="zh-Hant">回到論文列表</span>
+      </a>
+    </footer>
+
+  </div>
+
+  
+
+  
+
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>

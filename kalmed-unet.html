@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>KalMed-UNet | Sheng-Wei Chan</title>
+  <meta name="description" content="Kalman-inspired fusion connects encoder downsampling with decoder refinement. Mean Dice improves across all five KiTS23 folds, with lower architectural cost." />
+  <link rel="canonical" href="https://henrychan0719.github.io/kalmed-unet.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Kalman Filter-Based Multi-Resolution Feature Fusion for 3D Kidney Tumor Segmentation" />
+  <meta property="og:description" content="Kalman-inspired fusion connects encoder downsampling with decoder refinement. Mean Dice improves across all five KiTS23 folds, with lower architectural cost." />
+  <meta property="og:url" content="https://henrychan0719.github.io/kalmed-unet.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/assets/projects/kalmed-architecture.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="projects.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Kalman Filter-Based Multi-Resolution Feature Fusion for 3D Kidney Tumor Segmentation", "alternateName": "基於卡爾曼濾波的多解析度特徵融合於三維腎臟腫瘤分割", "description": "Downsampling can discard local detail needed for 3D kidney and tumor segmentation. KalMed-UNet builds on UMambaBot and introduces a Kalman-inspired fusion module in the encoder: strided-convolution features are updated using a pooling-projection branch, with the residual and an internal uncertainty proxy P controlling the fusion gain. P is propagated across resolutions and used in decoder fusion inspired by backward smoothing. On the 489 cases in the public KiTS23 training set, matched five-fold cross-validation with 1,000 training epochs improves mean Dice from 0.8700 to 0.8813. Kidney-region, mass, and tumor Dice all increase, and every fold improves. Parameter count and GFLOPs decrease by 1.31% and 4.48%, respectively. The results support the integrated fusion design under the reported training and evaluation protocol.", "url": "https://henrychan0719.github.io/kalmed-unet.html", "author": [{"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://henrychan0719.github.io/reports/kalmed-unet-report.pdf"}}</script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+  <div class="paper-page project-page">
+    <a href="index.html#projects" class="back-link">← <span lang="en">All projects</span><span lang="zh-Hant">回到專題成果</span></a>
+    <header class="paper-header">
+      <div class="paper-meta"><span class="badge"><span lang="en">Capstone report</span><span lang="zh-Hant">專題成果報告</span></span><span class="area-label">2026</span></div>
+      <p class="project-name">KalMed-UNet</p>
+      <h1><span lang="en">Kalman Filter-Based Multi-Resolution Feature Fusion for 3D Kidney Tumor Segmentation</span><span lang="zh-Hant">基於卡爾曼濾波的多解析度特徵融合於三維腎臟腫瘤分割</span></h1>
+      <p class="authors"><strong><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></strong> · <span lang="en">Hsin-Jui Pan</span><span lang="zh-Hant">潘信瑞</span> · <span lang="en">Chun-Po Shen</span><span lang="zh-Hant">沈群博</span></p>
+      <p class="venue"><span lang="en">Tamkang University · Advisor: Prof. Jen-Shiun Chiang</span><span lang="zh-Hant">淡江大學電機工程學系 · 指導教授：江正雄教授</span></p>
+      <div class="button-group">
+        <a href="reports/kalmed-unet-report.pdf" target="_blank" rel="noopener noreferrer" class="btn"><span lang="en">Read full report</span><span lang="zh-Hant">閱讀完整報告</span> <span class="file-format">PDF · 48p</span></a>
+        <a href="reports/kalmed-unet-report.pdf" download class="btn"><span lang="en">Download PDF</span><span lang="zh-Hant">下載 PDF</span> ↓</a>
+      </div>
+      <div class="tag-group project-tags"><span>KiTS23</span><span>UMambaBot</span><span>5-fold CV</span></div>
+    </header>
+    <main id="main">
+      <nav class="project-toc" aria-label="On this page / 本頁導覽">
+        <a href="#abstract"><span lang="en">Abstract</span><span lang="zh-Hant">摘要</span></a><a href="#method"><span lang="en">Method</span><span lang="zh-Hant">方法</span></a>
+        <a href="#results"><span lang="en">Results</span><span lang="zh-Hant">成果</span></a><a href="#scope"><span lang="en">Scope</span><span lang="zh-Hant">適用範圍</span></a><a href="#report"><span lang="en">Report</span><span lang="zh-Hant">完整報告</span></a>
+      </nav>
+      <div class="tldr"><h2><span lang="en">Research highlight</span><span lang="zh-Hant">專題重點</span></h2><p lang="en">Treat multi-resolution fusion as a prediction–update process: pass an internal state between scales, improving kidney and lesion segmentation while reducing parameter count and GFLOPs.</p><p lang="zh-Hant">將多解析度融合寫成預測與更新流程，讓內部狀態跨尺度傳遞；在改善腎臟與病灶分割的同時，減少參數量與計算量。</p></div>
+      <div class="project-metrics"><div><strong>0.8813</strong><span><span lang="en">Mean Dice · 5 folds</span><span lang="zh-Hant">五折平均 Dice</span></span></div><div><strong>+1.13 pp</strong><span><span lang="en">Dice vs. UMambaBot</span><span lang="zh-Hant">相對 UMambaBot 的 Dice</span></span></div><div><strong>−4.48%</strong><span><span lang="en">GFLOPs vs. baseline</span><span lang="zh-Hant">相對基準的計算量</span></span></div></div>
+      <section class="paper-section" id="abstract"><h2><span lang="en">Project abstract</span><span lang="zh-Hant">專題摘要</span></h2><p lang="en">Downsampling can discard local detail needed for 3D kidney and tumor segmentation. KalMed-UNet builds on UMambaBot and introduces a Kalman-inspired fusion module in the encoder: strided-convolution features are updated using a pooling-projection branch, with the residual and an internal uncertainty proxy P controlling the fusion gain. P is propagated across resolutions and used in decoder fusion inspired by backward smoothing. On the 489 cases in the public KiTS23 training set, matched five-fold cross-validation with 1,000 training epochs improves mean Dice from 0.8700 to 0.8813. Kidney-region, mass, and tumor Dice all increase, and every fold improves. Parameter count and GFLOPs decrease by 1.31% and 4.48%, respectively. The results support the integrated fusion design under the reported training and evaluation protocol.</p><p lang="zh-Hant">三維腎臟腫瘤分割需要保留局部邊界與病灶細節。本專題以 UMambaBot 為基準，於編碼器下採樣加入卡爾曼啟發式融合：以步幅卷積作為預測、池化投影作為觀測，利用殘差與不確定度代理量 P 決定融合增益，再將 P 跨解析度傳遞至解碼器，進行受後向平滑啟發的融合。於 KiTS23 公開訓練集 489 例進行 1,000 epochs、五折交叉驗證，平均 Dice 由 0.8700 提升至 0.8813，三個階層評估目標與五個 fold 皆改善；參數量與 GFLOPs 分別降低 1.31% 與 4.48%。結果支持整合式融合設計在既定訓練與評估流程下的效益。</p></section>
+      <section class="paper-section" id="method"><h2><span lang="en">Method</span><span lang="zh-Hant">方法設計</span></h2><ol class="method-list"><li><h3><span lang="en">Two complementary downsampling branches</span><span lang="zh-Hant">雙分支下採樣</span></h3><p lang="en">Align strided-convolution and max-pooling projection features, then update the prediction with a weighted residual.</p><p lang="zh-Hant">對齊步幅卷積與最大池化投影特徵，再以加權殘差修正預測。</p></li><li><h3><span lang="en">State propagation across scales</span><span lang="zh-Hant">跨尺度狀態傳遞</span></h3><p lang="en">Carry P between resolutions so each fusion stage has an auxiliary state rather than operating independently.</p><p lang="zh-Hant">將 P 在不同解析度間遞迴傳遞，讓各層融合可利用共同的輔助狀態。</p></li><li><h3><span lang="en">Decoder refinement</span><span lang="zh-Hant">解碼器融合</span></h3><p lang="en">Use the propagated state in fusion inspired by backward smoothing, while retaining the UMambaBot bottleneck as the common baseline.</p><p lang="zh-Hant">利用傳遞狀態進行受後向平滑啟發的融合，並保留 UMambaBot bottleneck 作為共同基底。</p></li></ol><figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/kalmed-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1219" height="852" src="assets/projects/kalmed-architecture.png" alt="Figure 3 · Cross-scale P propagation and decoder fusion." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 3 · Cross-scale P propagation and decoder fusion.</span><span lang="zh-Hant">圖 3：跨層 P 遞迴與解碼器後向融合。</span>
+        <a href="reports/kalmed-unet-report.pdf#page=19" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 19</span><span lang="zh-Hant">報告 PDF 第 19 頁</span></a>
+      </figcaption>
+    </figure></section>
+      <section class="paper-section" id="results"><h2><span lang="en">Representative results</span><span lang="zh-Hant">代表成果</span></h2>
+        <p lang="en">KiTS23 public training set; 489 cases; five-fold internal cross-validation; 1,000 epochs. Dice values are fold means.</p><p lang="zh-Hant">KiTS23 公開訓練集 489 例；五折內部交叉驗證；1,000 epochs。Dice 為五折平均值。</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Results table / 成果比較表"><table class="data project-data"><thead><tr><th scope="col"><span lang="en">Metric</span><span lang="zh-Hant">指標</span></th><th scope="col"><span lang="en">UMambaBot</span><span lang="zh-Hant">UMambaBot</span></th><th scope="col"><span lang="en">KalMed-UNet</span><span lang="zh-Hant">KalMed-UNet</span></th></tr></thead><tbody><tr><th scope="row"><span lang="en">Overall Dice</span><span lang="zh-Hant">整體 Dice</span></th><td>0.8700</td><td>0.8813</td></tr><tr><th scope="row"><span lang="en">Kidney-region Dice</span><span lang="zh-Hant">腎臟區域 Dice</span></th><td>0.9661</td><td>0.9807</td></tr><tr><th scope="row"><span lang="en">Mass Dice</span><span lang="zh-Hant">腫塊 Dice</span></th><td>0.8378</td><td>0.8467</td></tr><tr><th scope="row"><span lang="en">Tumor Dice</span><span lang="zh-Hant">腫瘤 Dice</span></th><td>0.8059</td><td>0.8165</td></tr><tr><th scope="row"><span lang="en">Parameters</span><span lang="zh-Hant">參數量</span></th><td>42.12 M</td><td>41.57 M</td></tr><tr><th scope="row"><span lang="en">GFLOPs</span><span lang="zh-Hant">GFLOPs</span></th><td>1939.68</td><td>1852.71</td></tr></tbody></table></div>
+        <div class="table-note"><p lang="en">Dice: report Tables 5–6. Architecture cost: Table 7. Its 250-epoch design-study Dice values are not mixed into the five-fold results above.</p><p lang="zh-Hant">Dice 取自報告表 5–6；架構成本取自表 7。表 7 的 250 epochs 單折設計比較分數未混入上方五折結果。</p><a href="reports/kalmed-unet-report.pdf#page=32" target="_blank" rel="noopener noreferrer"><span lang="en">View source tables →</span><span lang="zh-Hant">查看原始表格 →</span></a></div>
+        
+        <figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/kalmed-result.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1219" height="170" src="assets/projects/kalmed-result.jpg" alt="Figure 5 · A representative axial slice from case_00268: CT, ground truth, baseline, and KalMed-UNet. An illustrative case, separate from the five-fold aggregate." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 5 · A representative axial slice from case_00268: CT, ground truth, baseline, and KalMed-UNet. An illustrative case, separate from the five-fold aggregate.</span><span lang="zh-Hant">圖 5：case_00268 的代表性軸狀切片，依序為 CT、標註、基準與 KalMed-UNet；此例僅作視覺說明，整體表現以上述五折評估為準。</span>
+        <a href="reports/kalmed-unet-report.pdf#page=35" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 35</span><span lang="zh-Hant">報告 PDF 第 35 頁</span></a>
+      </figcaption>
+    </figure>
+      </section>
+      <section class="paper-section" id="scope"><h2><span lang="en">Interpretation &amp; scope</span><span lang="zh-Hant">成果解讀與適用範圍</span></h2><p lang="en">P is a learned internal proxy, not a calibrated clinical uncertainty estimate. The efficiency evidence concerns parameter count and GFLOPs; it does not establish a measured inference speedup. The five-fold evaluation uses the public training set rather than the official hidden test set, and the full design has not been independently validated on an external dataset.</p><p lang="zh-Hant">P 是網路內部的代理量，未驗證為經校準的臨床不確定度。效率證據限於參數量與 GFLOPs，未據此推定實測加速。五折評估使用公開訓練集，並非官方隱藏測試集；完整設計仍待外部資料驗證。</p></section>
+      <section class="paper-section" id="report"><h2><span lang="en">Full report &amp; evidence</span><span lang="zh-Hant">完整報告與對應證據</span></h2>
+        <p lang="en">The summary and figures on this page are drawn from the project report. The full report is in Traditional Chinese; page links below use the PDF page number.</p><p lang="zh-Hant">本頁摘要與圖表整理自專題報告。完整報告為繁體中文；下列連結使用 PDF 檔案頁碼。</p>
+        <ul class="source-links"><li><a href="reports/kalmed-unet-report.pdf#page=32" target="_blank" rel="noopener noreferrer"><span lang="en">Tables 5–7 · Main comparison and cost</span><span lang="zh-Hant">表 5–7：主要比較與架構成本</span></a><span><span lang="en">PDF p. 32</span><span lang="zh-Hant">PDF 第 32 頁</span></span></li><li><a href="reports/kalmed-unet-report.pdf#page=19" target="_blank" rel="noopener noreferrer"><span lang="en">Figure 3 · Architecture</span><span lang="zh-Hant">圖 3：整體架構</span></a><span><span lang="en">PDF p. 19</span><span lang="zh-Hant">PDF 第 19 頁</span></span></li><li><a href="reports/kalmed-unet-report.pdf#page=36" target="_blank" rel="noopener noreferrer"><span lang="en">Section 4.9 · Limitations</span><span lang="zh-Hant">4.9 節：限制與討論</span></a><span><span lang="en">PDF p. 36</span><span lang="zh-Hant">PDF 第 36 頁</span></span></li></ul>
+        <a class="btn" href="reports/kalmed-unet-report.pdf" target="_blank" rel="noopener noreferrer"><span lang="en">Open complete report</span><span lang="zh-Hant">開啟完整專題報告</span> <span class="file-format">PDF · 48p</span></a>
+      </section>
+      <nav class="related-projects" aria-label="Other projects / 其他專題"><h2><span lang="en">Other projects</span><span lang="zh-Hant">其他專題</span></h2><a href="swin-tk.html">Swin-TransKalman</a><a href="edge-yolo.html">YOLO-CFR / YOLO-LDS</a><a href="toponet.html">TopoNet / Neural Lithography</a></nav>
+    </main>
+    <footer class="paper-footer"><p><span lang="en">© 2026 Sheng-Wei Chan · Project summary updated September 28, 2026.</span><span lang="zh-Hant">© 2026 詹盛惟 · 專題摘要更新：2026 年 9 月 28 日。</span></p></footer>
+  </div>
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>

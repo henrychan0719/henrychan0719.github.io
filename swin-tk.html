@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Swin-TransKalman | Sheng-Wei Chan</title>
+  <meta name="description" content="Propagate features and a positive state through a Kalman-style decoder, producing both multi-organ masks and an uncertainty map for ranking segmentation errors." />
+  <link rel="canonical" href="https://henrychan0719.github.io/swin-tk.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="A Kalman Style Decoder with Uncertainty Quantification for Abdominal Multi Organ Segmentation" />
+  <meta property="og:description" content="Propagate features and a positive state through a Kalman-style decoder, producing both multi-organ masks and an uncertainty map for ranking segmentation errors." />
+  <meta property="og:url" content="https://henrychan0719.github.io/swin-tk.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/assets/projects/swin-tk-architecture.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="projects.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "A Kalman Style Decoder with Uncertainty Quantification for Abdominal Multi Organ Segmentation", "alternateName": "Swin TransKalman 具不確定性量化之卡爾曼濾波解碼器於腹部多器官分割", "description": "Swin-TransKalman (Swin-TK) extends SwinUNETR by expressing coarse-to-fine decoding as prediction and update steps. A learned positive state and observation noise determine element-wise fusion gains, while the updated state is propagated through the decoder and read out as voxel-level uncertainty. Encoder gates, attention temperature, and a log-state bias further regulate feature updates. Five-fold internal cross-validation on 50 labeled FLARE22 training CT scans covers 13 abdominal organs, using 40 training and 10 validation cases per fold for 1,000 epochs. The complete Swin-TK configuration improves DSC from 0.8649 to 0.8755 and NSD from 0.8917 to 0.9063; it also includes deep supervision and an uncertainty loss. Uncertainty achieves an error-ranking AUROC of 0.776 ± 0.039, compared with 0.609 ± 0.041 for image gradients.", "url": "https://henrychan0719.github.io/swin-tk.html", "author": [{"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://henrychan0719.github.io/reports/swin-tk-report.pdf"}}</script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+  <div class="paper-page project-page">
+    <a href="index.html#projects" class="back-link">← <span lang="en">All projects</span><span lang="zh-Hant">回到專題成果</span></a>
+    <header class="paper-header">
+      <div class="paper-meta"><span class="badge"><span lang="en">Capstone report</span><span lang="zh-Hant">專題成果報告</span></span><span class="area-label">2026</span></div>
+      <p class="project-name">Swin-TransKalman</p>
+      <h1><span lang="en">A Kalman Style Decoder with Uncertainty Quantification for Abdominal Multi Organ Segmentation</span><span lang="zh-Hant">Swin TransKalman 具不確定性量化之卡爾曼濾波解碼器於腹部多器官分割</span></h1>
+      <p class="authors"><strong><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></strong> · <span lang="en">Hsin-Jui Pan</span><span lang="zh-Hant">潘信瑞</span> · <span lang="en">Chun-Po Shen</span><span lang="zh-Hant">沈群博</span></p>
+      <p class="venue"><span lang="en">Tamkang University · Advisor: Prof. Jen-Shiun Chiang</span><span lang="zh-Hant">淡江大學電機工程學系 · 指導教授：江正雄教授</span></p>
+      <div class="button-group">
+        <a href="reports/swin-tk-report.pdf" target="_blank" rel="noopener noreferrer" class="btn"><span lang="en">Read full report</span><span lang="zh-Hant">閱讀完整報告</span> <span class="file-format">PDF · 47p</span></a>
+        <a href="reports/swin-tk-report.pdf" download class="btn"><span lang="en">Download PDF</span><span lang="zh-Hant">下載 PDF</span> ↓</a>
+      </div>
+      <div class="tag-group project-tags"><span>FLARE22</span><span>SwinUNETR</span><span>13 organs</span></div>
+    </header>
+    <main id="main">
+      <nav class="project-toc" aria-label="On this page / 本頁導覽">
+        <a href="#abstract"><span lang="en">Abstract</span><span lang="zh-Hant">摘要</span></a><a href="#method"><span lang="en">Method</span><span lang="zh-Hant">方法</span></a>
+        <a href="#results"><span lang="en">Results</span><span lang="zh-Hant">成果</span></a><a href="#scope"><span lang="en">Scope</span><span lang="zh-Hant">適用範圍</span></a><a href="#report"><span lang="en">Report</span><span lang="zh-Hant">完整報告</span></a>
+      </nav>
+      <div class="tldr"><h2><span lang="en">Research highlight</span><span lang="zh-Hant">專題重點</span></h2><p lang="en">Learn how much to trust each scale during feature fusion, and reuse the propagated state to flag regions more likely to contain segmentation errors.</p><p lang="zh-Hant">在多尺度融合時學習各來源的採用比例，再利用傳遞狀態產生不確定度圖，協助辨識較容易分割錯誤的區域。</p></div>
+      <div class="project-metrics"><div><strong>0.8755</strong><span><span lang="en">Mean DSC · 5 folds</span><span lang="zh-Hant">五折平均 DSC</span></span></div><div><strong>0.9063</strong><span><span lang="en">Mean surface Dice (NSD)</span><span lang="zh-Hant">平均表面重疊係數 NSD</span></span></div><div><strong>0.776</strong><span><span lang="en">Uncertainty AUROC</span><span lang="zh-Hant">不確定度錯誤辨識 AUROC</span></span></div></div>
+      <section class="paper-section" id="abstract"><h2><span lang="en">Project abstract</span><span lang="zh-Hant">專題摘要</span></h2><p lang="en">Swin-TransKalman (Swin-TK) extends SwinUNETR by expressing coarse-to-fine decoding as prediction and update steps. A learned positive state and observation noise determine element-wise fusion gains, while the updated state is propagated through the decoder and read out as voxel-level uncertainty. Encoder gates, attention temperature, and a log-state bias further regulate feature updates. Five-fold internal cross-validation on 50 labeled FLARE22 training CT scans covers 13 abdominal organs, using 40 training and 10 validation cases per fold for 1,000 epochs. The complete Swin-TK configuration improves DSC from 0.8649 to 0.8755 and NSD from 0.8917 to 0.9063; it also includes deep supervision and an uncertainty loss. Uncertainty achieves an error-ranking AUROC of 0.776 ± 0.039, compared with 0.609 ± 0.041 for image gradients.</p><p lang="zh-Hant">Swin-TransKalman（Swin-TK）以 SwinUNETR 為基礎，將由粗至細的解碼表述為預測與更新。模型利用可學習正值狀態與觀測雜訊形成逐元素融合增益，並持續傳遞更新狀態，最後讀出逐體素不確定度；編碼器另整合卡爾曼式閘門、注意力溫度與對數狀態偏置。於 FLARE22 的 50 例標註 CT 進行五折內部交叉驗證，每折 40 例訓練、10 例驗證、1,000 epochs，分割 13 類腹部器官。包含深監督與不確定度損失的完整配置，將 DSC 由 0.8649 提升至 0.8755，NSD 由 0.8917 提升至 0.9063；不確定度的錯誤排序 AUROC 為 0.776 ± 0.039，高於影像梯度的 0.609 ± 0.041。</p></section>
+      <section class="paper-section" id="method"><h2><span lang="en">Method</span><span lang="zh-Hant">方法設計</span></h2><ol class="method-list"><li><h3><span lang="en">Kalman-style feature fusion</span><span lang="zh-Hant">卡爾曼式特徵融合</span></h3><p lang="en">Use positive states and observation noise to form element-wise gains for combining decoder predictions with encoder skip features.</p><p lang="zh-Hant">利用正值狀態與觀測雜訊形成逐元素增益，融合解碼預測與編碼跳接特徵。</p></li><li><h3><span lang="en">Encoder information control</span><span lang="zh-Hant">編碼器資訊調節</span></h3><p lang="en">Integrate Kalman-style gates, attention-temperature control, and a log-state bias in the hierarchical encoder.</p><p lang="zh-Hant">在階層式編碼器中整合卡爾曼式閘門、注意力溫度調節與對數狀態偏置。</p></li><li><h3><span lang="en">Segmentation and uncertainty outputs</span><span lang="zh-Hant">分割與不確定度雙輸出</span></h3><p lang="en">Read out voxel-level uncertainty from the propagated state and evaluate its ability to rank erroneous voxels.</p><p lang="zh-Hant">由持續傳遞的狀態讀出逐體素不確定度，並評估其對錯誤體素的排序能力。</p></li></ol><figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/swin-tk-architecture.svg" target="_blank" rel="noopener noreferrer" aria-label="Open architecture diagram / 放大架構圖">
+        <img width="1400" height="1190" src="assets/projects/swin-tk-architecture.svg" alt="Swin-TK: hierarchical encoder with attention control, five decoder stages with feature and positive-state propagation, segmentation and uncertainty outputs" loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Swin-TK architecture · Redrawn from report Sections 3.1–3.4. The five decoder stages propagate features and a positive state P from coarse to fine scales; P also supports the uncertainty readout. Sizes illustrate a 96³ input patch.</span><span lang="zh-Hant">Swin-TK 架構圖：依報告第 3.1–3.4 節重新繪製。五層解碼器由粗至細傳遞特徵與正值狀態 P，並由 P 讀出不確定度；尺寸以 96³ 輸入區塊為例。</span>
+        <a href="reports/swin-tk-report.pdf#page=18" target="_blank" rel="noopener noreferrer"><span lang="en">Architecture and equations · Report PDF pp. 18–24</span><span lang="zh-Hant">架構與公式：報告 PDF 第 18–24 頁</span></a>
+        <a href="assets/projects/swin-architecture.png" target="_blank" rel="noopener noreferrer"><span lang="en">Original Figure 2</span><span lang="zh-Hant">查看原報告圖 2</span></a>
+      </figcaption>
+    </figure></section>
+      <section class="paper-section" id="results"><h2><span lang="en">Representative results</span><span lang="zh-Hant">代表成果</span></h2>
+        <p lang="en">Five-fold internal cross-validation on 50 labeled FLARE22 training cases. Both models use 1,000 epochs; the complete Swin-TK configuration also adds deep supervision and an uncertainty loss.</p><p lang="zh-Hant">FLARE22 的 50 例標註訓練資料、五折內部交叉驗證。兩模型皆訓練 1,000 epochs；完整 Swin-TK 另加入深監督與不確定度損失。</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Results table / 成果比較表"><table class="data project-data"><thead><tr><th scope="col"><span lang="en">Metric</span><span lang="zh-Hant">指標</span></th><th scope="col"><span lang="en">SwinUNETR</span><span lang="zh-Hant">SwinUNETR</span></th><th scope="col"><span lang="en">Swin-TK</span><span lang="zh-Hant">Swin-TK</span></th></tr></thead><tbody><tr><th scope="row"><span lang="en">Mean DSC</span><span lang="zh-Hant">平均 DSC</span></th><td>0.8649</td><td>0.8755</td></tr><tr><th scope="row"><span lang="en">Mean NSD</span><span lang="zh-Hant">平均 NSD</span></th><td>0.8917</td><td>0.9063</td></tr><tr><th scope="row"><span lang="en">Parameters</span><span lang="zh-Hant">參數量</span></th><td>62.2 M</td><td>63.6 M</td></tr></tbody></table></div>
+        <div class="table-note"><p lang="en">Report Table 10. DSC uses the main cross-validation summary; NSD uses the surface-evaluation pipeline. Improvements are +1.06 and +1.46 percentage points, respectively.</p><p lang="zh-Hant">取自報告表 10。DSC 採主交叉驗證彙總，NSD 採表面評估流程；分別改善 1.06 與 1.46 個百分點。</p><a href="reports/swin-tk-report.pdf#page=33" target="_blank" rel="noopener noreferrer"><span lang="en">View source tables →</span><span lang="zh-Hant">查看原始表格 →</span></a></div>
+        <div class="result-context"><p lang="en">The main DSC comparison improves in all five folds and in 39 of 50 cases. A supplemental fold-1 comparison without deep supervision in either model raises DSC from 0.8706 to 0.8769. The uncertainty AUROC measures error ranking; it is not evidence of probability calibration.</p><p lang="zh-Hant">主 DSC 評估中，五折皆改善，50 例中有 39 例進步。第 1 折補充比較在兩模型皆未使用深監督時，DSC 仍由 0.8706 提升至 0.8769。不確定度 AUROC 衡量錯誤排序能力，不代表已完成機率校準。</p></div>
+        <figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/swin-result.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1165" height="267" src="assets/projects/swin-result.jpg" alt="Figure 14 · Development-stage illustration of CT, prediction, ground truth, and uncertainty. This example is not a representative sample of the five-fold AUROC evaluation." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 14 · Development-stage illustration of CT, prediction, ground truth, and uncertainty. This example is not a representative sample of the five-fold AUROC evaluation.</span><span lang="zh-Hant">圖 14：開發階段的 CT、分割、標註與不確定度示例；此圖用於說明輸出形式，不作為五折 AUROC 評估的代表樣本。</span>
+        <a href="reports/swin-tk-report.pdf#page=42" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 42</span><span lang="zh-Hant">報告 PDF 第 42 頁</span></a>
+      </figcaption>
+    </figure>
+      </section>
+      <section class="paper-section" id="scope"><h2><span lang="en">Interpretation &amp; scope</span><span lang="zh-Hant">成果解讀與適用範圍</span></h2><p lang="en">The main experiment compares complete configurations, so the gain cannot be assigned to one module alone. Single-fold ablation does not replace full module ablations, multi-seed training, or external validation. The uncertainty output has demonstrated ranking utility under this protocol, not calibrated error probabilities.</p><p lang="zh-Hant">主實驗比較完整配置，增益不能全數歸於單一模組。單折消融尚不能取代完整模組消融、多種子訓練及外部驗證。不確定度輸出在目前流程下具錯誤排序能力，尚未驗證其機率校準。</p></section>
+      <section class="paper-section" id="report"><h2><span lang="en">Full report &amp; evidence</span><span lang="zh-Hant">完整報告與對應證據</span></h2>
+        <p lang="en">The summary and figures on this page are drawn from the project report. The full report is in Traditional Chinese; page links below use the PDF page number.</p><p lang="zh-Hant">本頁摘要與圖表整理自專題報告。完整報告為繁體中文；下列連結使用 PDF 檔案頁碼。</p>
+        <ul class="source-links"><li><a href="reports/swin-tk-report.pdf#page=33" target="_blank" rel="noopener noreferrer"><span lang="en">Table 10 · Main comparison</span><span lang="zh-Hant">表 10：主要比較</span></a><span><span lang="en">PDF p. 33</span><span lang="zh-Hant">PDF 第 33 頁</span></span></li><li><a href="reports/swin-tk-report.pdf#page=39" target="_blank" rel="noopener noreferrer"><span lang="en">Table 15 · Deep-supervision comparison</span><span lang="zh-Hant">表 15：深監督補充比較</span></a><span><span lang="en">PDF p. 39</span><span lang="zh-Hant">PDF 第 39 頁</span></span></li><li><a href="reports/swin-tk-report.pdf#page=40" target="_blank" rel="noopener noreferrer"><span lang="en">Table 16 · Uncertainty evaluation</span><span lang="zh-Hant">表 16：不確定度評估</span></a><span><span lang="en">PDF p. 40</span><span lang="zh-Hant">PDF 第 40 頁</span></span></li></ul>
+        <a class="btn" href="reports/swin-tk-report.pdf" target="_blank" rel="noopener noreferrer"><span lang="en">Open complete report</span><span lang="zh-Hant">開啟完整專題報告</span> <span class="file-format">PDF · 47p</span></a>
+      </section>
+      <nav class="related-projects" aria-label="Other projects / 其他專題"><h2><span lang="en">Other projects</span><span lang="zh-Hant">其他專題</span></h2><a href="kalmed-unet.html">KalMed-UNet</a><a href="edge-yolo.html">YOLO-CFR / YOLO-LDS</a><a href="toponet.html">TopoNet / Neural Lithography</a></nav>
+    </main>
+    <footer class="paper-footer"><p><span lang="en">© 2026 Sheng-Wei Chan · Project summary updated September 28, 2026.</span><span lang="zh-Hant">© 2026 詹盛惟 · 專題摘要更新：2026 年 9 月 28 日。</span></p></footer>
+  </div>
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>

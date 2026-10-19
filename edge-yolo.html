@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>YOLO-CFR / YOLO-LDS | Sheng-Wei Chan</title>
+  <meta name="description" content="Compare feature reuse and lightweight downsampling on Raspberry Pi 5. LDS cuts exported FLOPs by 10.9% and measured NCNN inference latency by 4.9%." />
+  <link rel="canonical" href="https://henrychan0719.github.io/edge-yolo.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices" />
+  <meta property="og:description" content="Compare feature reuse and lightweight downsampling on Raspberry Pi 5. LDS cuts exported FLOPs by 10.9% and measured NCNN inference latency by 4.9%." />
+  <meta property="og:url" content="https://henrychan0719.github.io/edge-yolo.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/assets/projects/yolo-architecture.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="projects.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices", "alternateName": "延遲導向輕量化 YOLO 於邊緣裝置之即時影像感知", "description": "This project investigates whether lightweight modifications to YOLO26n translate into practical speed gains on the ARM CPU of Raspberry Pi 5. Cross-stage Feature Reuse (CFR) combines Ghost bottlenecks with branch fusion; Lightweight Downsampling (LDS) uses GhostConv followed by ECA at selected downsampling stages. The main models are trained on PASCAL VOC for 100 epochs with three random seeds and exported through ONNX and NCNN FP32 workflows. CFR reaches mean mAP50–95 of 0.5014 versus 0.4854 for baseline, but NCNN inference latency rises from 61.11 to 74.74 ms. LDS reaches 0.4851 mAP50–95, reduces exported FLOPs by 10.9%, and lowers NCNN latency by 4.9% to 58.14 ms. The results distinguish theoretical computation from measured deployment cost.", "url": "https://henrychan0719.github.io/edge-yolo.html", "author": [{"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://henrychan0719.github.io/reports/edge-yolo-report.pdf"}}</script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+  <div class="paper-page project-page">
+    <a href="index.html#projects" class="back-link">← <span lang="en">All projects</span><span lang="zh-Hant">回到專題成果</span></a>
+    <header class="paper-header">
+      <div class="paper-meta"><span class="badge"><span lang="en">Capstone report</span><span lang="zh-Hant">專題成果報告</span></span><span class="area-label">2026</span></div>
+      <p class="project-name">YOLO-CFR / YOLO-LDS</p>
+      <h1><span lang="en">Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices</span><span lang="zh-Hant">延遲導向輕量化 YOLO 於邊緣裝置之即時影像感知</span></h1>
+      <p class="authors"><span lang="en">Hsin-Jui Pan</span><span lang="zh-Hant">潘信瑞</span> · <strong><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></strong> · <span lang="en">Chun-Po Shen</span><span lang="zh-Hant">沈群博</span></p>
+      <p class="venue"><span lang="en">Tamkang University · Advisor: Prof. Jen-Shiun Chiang</span><span lang="zh-Hant">淡江大學電機工程學系 · 指導教授：江正雄教授</span></p>
+      <div class="button-group">
+        <a href="reports/edge-yolo-report.pdf" target="_blank" rel="noopener noreferrer" class="btn"><span lang="en">Read full report</span><span lang="zh-Hant">閱讀完整報告</span> <span class="file-format">PDF · 48p</span></a>
+        <a href="reports/edge-yolo-report.pdf" download class="btn"><span lang="en">Download PDF</span><span lang="zh-Hant">下載 PDF</span> ↓</a>
+      </div>
+      <div class="tag-group project-tags"><span>YOLO26n</span><span>Raspberry Pi 5</span><span>NCNN / ONNX</span></div>
+    </header>
+    <main id="main">
+      <nav class="project-toc" aria-label="On this page / 本頁導覽">
+        <a href="#abstract"><span lang="en">Abstract</span><span lang="zh-Hant">摘要</span></a><a href="#method"><span lang="en">Method</span><span lang="zh-Hant">方法</span></a>
+        <a href="#results"><span lang="en">Results</span><span lang="zh-Hant">成果</span></a><a href="#scope"><span lang="en">Scope</span><span lang="zh-Hant">適用範圍</span></a><a href="#report"><span lang="en">Report</span><span lang="zh-Hant">完整報告</span></a>
+      </nav>
+      <div class="tldr"><h2><span lang="en">Research highlight</span><span lang="zh-Hant">專題重點</span></h2><p lang="en">Use measured device latency to choose a model: CFR improves accuracy at a higher execution cost, while LDS keeps mean accuracy close to baseline with a modest latency reduction.</p><p lang="zh-Hant">以實機延遲決定模型取捨：CFR 以較高執行成本換取精度，LDS 則在平均精度接近基準的情況下，小幅降低推論延遲。</p></div>
+      <div class="project-metrics"><div><strong>58.14 ms</strong><span><span lang="en">LDS · NCNN inference</span><span lang="zh-Hant">LDS 的 NCNN 純推論延遲</span></span></div><div><strong>−10.9%</strong><span><span lang="en">LDS · exported FLOPs</span><span lang="zh-Hant">LDS 匯出態 FLOPs</span></span></div><div><strong>0.4851</strong><span><span lang="en">LDS · mean mAP50–95</span><span lang="zh-Hant">LDS 平均 mAP50–95</span></span></div></div>
+      <section class="paper-section" id="abstract"><h2><span lang="en">Project abstract</span><span lang="zh-Hant">專題摘要</span></h2><p lang="en">This project investigates whether lightweight modifications to YOLO26n translate into practical speed gains on the ARM CPU of Raspberry Pi 5. Cross-stage Feature Reuse (CFR) combines Ghost bottlenecks with branch fusion; Lightweight Downsampling (LDS) uses GhostConv followed by ECA at selected downsampling stages. The main models are trained on PASCAL VOC for 100 epochs with three random seeds and exported through ONNX and NCNN FP32 workflows. CFR reaches mean mAP50–95 of 0.5014 versus 0.4854 for baseline, but NCNN inference latency rises from 61.11 to 74.74 ms. LDS reaches 0.4851 mAP50–95, reduces exported FLOPs by 10.9%, and lowers NCNN latency by 4.9% to 58.14 ms. The results distinguish theoretical computation from measured deployment cost.</p><p lang="zh-Hant">本專題以 YOLO26n 與 Raspberry Pi 5 ARM CPU 為基礎，探討輕量化架構的理論成本是否能轉換為實際部署加速。CFR 結合 Ghost bottleneck 與分支融合；LDS 以 GhostConv 接續 ECA，取代部分下採樣卷積。主要模型於 PASCAL VOC 以三個隨機種子訓練 100 epochs，再透過 ONNX 與 NCNN 進行 FP32 部署量測。CFR 的平均 mAP50–95 由基準的 0.4854 提升至 0.5014，但 NCNN 推論延遲由 61.11 ms 增至 74.74 ms；LDS 的平均精度為 0.4851，匯出態 FLOPs 降低 10.9%，NCNN 延遲降低 4.9% 至 58.14 ms。結果呈現理論計算量與實機成本的差異，並支持依目標裝置選擇精度與速度的取捨。</p></section>
+      <section class="paper-section" id="method"><h2><span lang="en">Method</span><span lang="zh-Hant">方法設計</span></h2><ol class="method-list"><li><h3><span lang="en">CFR: feature reuse</span><span lang="zh-Hant">CFR：特徵複用</span></h3><p lang="en">Combine a split branch with Ghost bottleneck features. The tested nano instance uses one bottleneck (n=1), so cross-unit propagation is inactive.</p><p lang="zh-Hant">結合切分支路與 Ghost bottleneck 特徵；本次 nano 實例僅有一個單元（n=1），未啟用跨單元傳遞。</p></li><li><h3><span lang="en">LDS: lightweight downsampling</span><span lang="zh-Hant">LDS：輕量下採樣</span></h3><p lang="en">Replace selected downsampling stages with GhostConv followed by ECA, and compare the complete configuration with the baseline.</p><p lang="zh-Hant">在選定下採樣位置使用 GhostConv 接續 ECA，並以完整配置與基準比較。</p></li><li><h3><span lang="en">Accuracy and device measurements</span><span lang="zh-Hant">精度與實機量測</span></h3><p lang="en">Use three training seeds for accuracy and 60 timed inference samples per model for latency summaries on Raspberry Pi 5.</p><p lang="zh-Hant">以三個訓練種子整理精度，在 Raspberry Pi 5 對各模型取樣 60 次推論，彙整延遲中位數。</p></li></ol><figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/yolo-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1180" height="625" src="assets/projects/yolo-architecture.png" alt="Figure 3 · The tested nano CFR path and the GhostConv → ECA order in LDS." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 3 · The tested nano CFR path and the GhostConv → ECA order in LDS.</span><span lang="zh-Hant">圖 3：本次 nano CFR 的特徵路徑，以及 LDS 的 GhostConv → ECA 運算順序。</span>
+        <a href="reports/edge-yolo-report.pdf#page=17" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 17</span><span lang="zh-Hant">報告 PDF 第 17 頁</span></a>
+      </figcaption>
+    </figure></section>
+      <section class="paper-section" id="results"><h2><span lang="en">Representative results</span><span lang="zh-Hant">代表成果</span></h2>
+        <p lang="en">PASCAL VOC; 100 epochs; three seeds. Accuracy is mean ± sample standard deviation. Latency is the median FP32 NCNN inference time on Raspberry Pi 5, excluding preprocessing and postprocessing.</p><p lang="zh-Hant">PASCAL VOC；100 epochs；三個種子。精度為平均 ± 樣本標準差；延遲為 Raspberry Pi 5、FP32、NCNN 的純推論中位數，不含前後處理。</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Results table / 成果比較表"><table class="data project-data"><thead><tr><th scope="col"><span lang="en">Model</span><span lang="zh-Hant">模型</span></th><th scope="col"><span lang="en">mAP50–95</span><span lang="zh-Hant">mAP50–95</span></th><th scope="col"><span lang="en">NCNN latency</span><span lang="zh-Hant">NCNN 延遲</span></th><th scope="col"><span lang="en">Exported FLOPs</span><span lang="zh-Hant">匯出態 FLOPs</span></th></tr></thead><tbody><tr><th scope="row"><span lang="en">YOLO26n baseline</span><span lang="zh-Hant">YOLO26n 基準</span></th><td>0.4854 ± 0.0029</td><td>61.11 ms</td><td>5.452 G</td></tr><tr><th scope="row"><span lang="en">YOLO-CFR</span><span lang="zh-Hant">YOLO-CFR</span></th><td>0.5014 ± 0.0045</td><td>74.74 ms</td><td>6.612 G</td></tr><tr><th scope="row"><span lang="en">YOLO-LDS</span><span lang="zh-Hant">YOLO-LDS</span></th><td>0.4851 ± 0.0048</td><td>58.14 ms</td><td>4.857 G</td></tr></tbody></table></div>
+        <div class="table-note"><p lang="en">Report Tables 16–17. FLOPs use the PNNX export summary. The accuracy standard deviation is not a latency error bar; deployment-format accuracy equivalence has not been fully evaluated.</p><p lang="zh-Hant">取自報告表 16–17。FLOPs 採 PNNX 匯出摘要；精度標準差不是延遲誤差，且尚未完整驗證不同部署格式的精度一致性。</p><a href="reports/edge-yolo-report.pdf#page=31" target="_blank" rel="noopener noreferrer"><span lang="en">View source tables →</span><span lang="zh-Hant">查看原始表格 →</span></a></div>
+        
+        <figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/yolo-results.png" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1180" height="553" src="assets/projects/yolo-results.png" alt="Figure 9 · Accuracy versus NCNN inference latency. Error bars show training-seed accuracy variation; CFR-deep is a single-seed supplemental configuration." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 9 · Accuracy versus NCNN inference latency. Error bars show training-seed accuracy variation; CFR-deep is a single-seed supplemental configuration.</span><span lang="zh-Hant">圖 9：精度與 NCNN 推論延遲的取捨。誤差棒為訓練種子的精度變異；CFR-deep 為單種子補充配置。</span>
+        <a href="reports/edge-yolo-report.pdf#page=32" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 32</span><span lang="zh-Hant">報告 PDF 第 32 頁</span></a>
+      </figcaption>
+    </figure>
+      </section>
+      <section class="paper-section" id="scope"><h2><span lang="en">Interpretation &amp; scope</span><span lang="zh-Hant">成果解讀與適用範圍</span></h2><p lang="en">The VOC setup uses test2007 for both validation and testing, so model-selection effects remain possible. The ONNX and NCNN exports have different output branches and graphs, preventing a clean framework-only speed comparison. Results are limited to the reported Pi 5 / FP32 setup; lower FLOPs do not guarantee proportional speedups or unchanged accuracy.</p><p lang="zh-Hant">VOC 設定將 test2007 同時作為驗證與測試，需考慮模型選擇影響。ONNX 與 NCNN 的匯出圖及輸出分支不同，速度差異不能全數歸於框架本身。結果限於本次 Pi 5／FP32 設定；FLOPs 下降不保證等比例加速，也不代表精度已證明等效。</p></section>
+      <section class="paper-section" id="report"><h2><span lang="en">Full report &amp; evidence</span><span lang="zh-Hant">完整報告與對應證據</span></h2>
+        <p lang="en">The summary and figures on this page are drawn from the project report. The full report is in Traditional Chinese; page links below use the PDF page number.</p><p lang="zh-Hant">本頁摘要與圖表整理自專題報告。完整報告為繁體中文；下列連結使用 PDF 檔案頁碼。</p>
+        <ul class="source-links"><li><a href="reports/edge-yolo-report.pdf#page=31" target="_blank" rel="noopener noreferrer"><span lang="en">Tables 16–17 · Accuracy, latency, and cost</span><span lang="zh-Hant">表 16–17：精度、延遲與成本</span></a><span><span lang="en">PDF p. 31</span><span lang="zh-Hant">PDF 第 31 頁</span></span></li><li><a href="reports/edge-yolo-report.pdf#page=29" target="_blank" rel="noopener noreferrer"><span lang="en">Section 4.2 · Measurement and data split</span><span lang="zh-Hant">4.2 節：量測與資料切分</span></a><span><span lang="en">PDF p. 29</span><span lang="zh-Hant">PDF 第 29 頁</span></span></li><li><a href="reports/edge-yolo-report.pdf#page=37" target="_blank" rel="noopener noreferrer"><span lang="en">Sections 4.6–4.7 · Deployment workflows</span><span lang="zh-Hant">4.6–4.7 節：部署流程</span></a><span><span lang="en">PDF p. 37</span><span lang="zh-Hant">PDF 第 37 頁</span></span></li></ul>
+        <a class="btn" href="reports/edge-yolo-report.pdf" target="_blank" rel="noopener noreferrer"><span lang="en">Open complete report</span><span lang="zh-Hant">開啟完整專題報告</span> <span class="file-format">PDF · 48p</span></a>
+      </section>
+      <nav class="related-projects" aria-label="Other projects / 其他專題"><h2><span lang="en">Other projects</span><span lang="zh-Hant">其他專題</span></h2><a href="kalmed-unet.html">KalMed-UNet</a><a href="swin-tk.html">Swin-TransKalman</a><a href="toponet.html">TopoNet / Neural Lithography</a></nav>
+    </main>
+    <footer class="paper-footer"><p><span lang="en">© 2026 Sheng-Wei Chan · Project summary updated September 28, 2026.</span><span lang="zh-Hant">© 2026 詹盛惟 · 專題摘要更新：2026 年 9 月 28 日。</span></p></footer>
+  </div>
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>

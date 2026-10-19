@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>TopoNet / Neural Lithography | Sheng-Wei Chan</title>
+  <meta name="description" content="Evaluate bridge and break events beyond global IoU. Physical perturbation augmentation and TopoNet improve defect recall, with explicit false-positive and image-fidelity trade-offs." />
+  <link rel="canonical" href="https://henrychan0719.github.io/toponet.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Image Quality Analysis and Reliability Enhancement in Neural Lithography Simulation" />
+  <meta property="og:description" content="Evaluate bridge and break events beyond global IoU. Physical perturbation augmentation and TopoNet improve defect recall, with explicit false-positive and image-fidelity trade-offs." />
+  <meta property="og:url" content="https://henrychan0719.github.io/toponet.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/assets/projects/toponet-architecture.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="projects.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Image Quality Analysis and Reliability Enhancement in Neural Lithography Simulation", "alternateName": "神經微影模擬之成像品質分析與可靠度提升", "description": "This project evaluates whether neural lithography simulators reliably predict local bridge and break defects, which may have little impact on global pixel similarity. A three-level evaluation combines edge-band fidelity, edge placement error, and matched topology events. Morphologically perturbed masks are re-simulated with a physics-based model to expand coverage of near-critical patterns. TopoNet augments DOINN with Haar detail subbands, gap/thin structural priors, a refinement head, and an asymmetric topology loss, increasing parameters by approximately 2.8%. On the same 571 bridge reference events, mean recall across three training runs rises from 0.8634 for augmented DOINN to 0.9457; mean misses fall from 78 to 31, while false positives rise from 8.67 to 31.33. An Ibex RISC-V extension uses DEF/LEF connectivity to associate geometric bridges with cross-net short risks.", "url": "https://henrychan0719.github.io/toponet.html", "author": [{"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://henrychan0719.github.io/reports/toponet-report.pdf"}}</script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+  <div class="paper-page project-page">
+    <a href="index.html#projects" class="back-link">← <span lang="en">All projects</span><span lang="zh-Hant">回到專題成果</span></a>
+    <header class="paper-header">
+      <div class="paper-meta"><span class="badge"><span lang="en">Capstone report</span><span lang="zh-Hant">專題成果報告</span></span><span class="area-label">2026</span></div>
+      <p class="project-name">TopoNet / Neural Lithography</p>
+      <h1><span lang="en">Image Quality Analysis and Reliability Enhancement in Neural Lithography Simulation</span><span lang="zh-Hant">神經微影模擬之成像品質分析與可靠度提升</span></h1>
+      <p class="authors"><strong><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></strong> · <span lang="en">Hsin-Jui Pan</span><span lang="zh-Hant">潘信瑞</span> · <span lang="en">Chun-Po Shen</span><span lang="zh-Hant">沈群博</span></p>
+      <p class="venue"><span lang="en">Tamkang University · Advisor: Prof. Jen-Shiun Chiang</span><span lang="zh-Hant">淡江大學電機工程學系 · 指導教授：江正雄教授</span></p>
+      <div class="button-group">
+        <a href="reports/toponet-report.pdf" target="_blank" rel="noopener noreferrer" class="btn"><span lang="en">Read full report</span><span lang="zh-Hant">閱讀完整報告</span> <span class="file-format">PDF · 55p</span></a>
+        <a href="reports/toponet-report.pdf" download class="btn"><span lang="en">Download PDF</span><span lang="zh-Hant">下載 PDF</span> ↓</a>
+      </div>
+      <div class="tag-group project-tags"><span>LithoBench</span><span>Topology</span><span>Ibex RISC-V</span></div>
+    </header>
+    <main id="main">
+      <nav class="project-toc" aria-label="On this page / 本頁導覽">
+        <a href="#abstract"><span lang="en">Abstract</span><span lang="zh-Hant">摘要</span></a><a href="#method"><span lang="en">Method</span><span lang="zh-Hant">方法</span></a>
+        <a href="#results"><span lang="en">Results</span><span lang="zh-Hant">成果</span></a><a href="#scope"><span lang="en">Scope</span><span lang="zh-Hant">適用範圍</span></a><a href="#report"><span lang="en">Report</span><span lang="zh-Hant">完整報告</span></a>
+      </nav>
+      <div class="tldr"><h2><span lang="en">Research highlight</span><span lang="zh-Hant">專題重點</span></h2><p lang="en">A high global IoU can coexist with missed connectivity defects. Evaluate event-level errors, cover near-critical patterns during training, and report the cost of higher defect sensitivity.</p><p lang="zh-Hant">高全域 IoU 仍可能漏掉影響連通性的缺陷。研究需衡量事件級錯誤、補足近臨界樣本，並同時呈現提高缺陷敏感度的代價。</p></div>
+      <div class="project-metrics"><div><strong>94.57%</strong><span><span lang="en">Bridge recall · 3 runs</span><span lang="zh-Hant">三次平均橋接召回率</span></span></div><div><strong>78 → 31</strong><span><span lang="en">Mean missed bridges / 571</span><span lang="zh-Hant">571 事件中的平均漏檢數</span></span></div><div><strong>+2.8%</strong><span><span lang="en">Parameters vs. DOINN</span><span lang="zh-Hant">相對 DOINN 的參數增加</span></span></div></div>
+      <section class="paper-section" id="abstract"><h2><span lang="en">Project abstract</span><span lang="zh-Hant">專題摘要</span></h2><p lang="en">This project evaluates whether neural lithography simulators reliably predict local bridge and break defects, which may have little impact on global pixel similarity. A three-level evaluation combines edge-band fidelity, edge placement error, and matched topology events. Morphologically perturbed masks are re-simulated with a physics-based model to expand coverage of near-critical patterns. TopoNet augments DOINN with Haar detail subbands, gap/thin structural priors, a refinement head, and an asymmetric topology loss, increasing parameters by approximately 2.8%. On the same 571 bridge reference events, mean recall across three training runs rises from 0.8634 for augmented DOINN to 0.9457; mean misses fall from 78 to 31, while false positives rise from 8.67 to 31.33. An Ibex RISC-V extension uses DEF/LEF connectivity to associate geometric bridges with cross-net short risks.</p><p lang="zh-Hant">本專題檢查神經微影模擬器是否能可靠預測局部橋接與斷裂；這些缺陷可能只影響少量像素，卻改變圖形連通性。研究建立邊緣帶、邊緣位移與拓樸事件配對的三層評估，並將形態學擾動後的光罩重新以物理模型模擬，補足近臨界樣本。TopoNet 在 DOINN 上加入 Haar 小波細節、gap／thin 結構先驗、拓樸細化頭及非對稱損失，參數增加約 2.8%。在相同 571 個橋接參考事件上，相對增強 DOINN，三次平均 recall 由 0.8634 提升至 0.9457，平均漏檢由 78 降至 31，誤報則由 8.67 增至 31.33。研究另延伸至 Ibex RISC-V 版圖，利用 DEF／LEF 連線資訊分析跨網路短路風險。</p></section>
+      <section class="paper-section" id="method"><h2><span lang="en">Method</span><span lang="zh-Hant">方法設計</span></h2><ol class="method-list"><li><h3><span lang="en">Evaluate connectivity events</span><span lang="zh-Hant">評估連通性事件</span></h3><p lang="en">Pair predicted bridge and break events with a physics-based reference, complementing global image similarity with defect-level precision and recall.</p><p lang="zh-Hant">將預測橋接、斷裂與物理參考事件配對，以事件級 precision／recall 補足全域影像相似度。</p></li><li><h3><span lang="en">Improve near-critical data coverage</span><span lang="zh-Hant">補足近臨界資料</span></h3><p lang="en">Perturb masks morphologically and re-simulate the printed patterns. Use sampling controls to distinguish distribution coverage from additional training data alone.</p><p lang="zh-Hant">對光罩施加形態學擾動後重新模擬印出結果，並透過抽樣對照檢查資料分佈覆蓋的作用。</p></li><li><h3><span lang="en">TopoNet and circuit context</span><span lang="zh-Hant">TopoNet 與電路情境</span></h3><p lang="en">Combine wavelet details, structural priors, refinement, and asymmetric penalties; extend event analysis to net-aware short risks on Ibex layouts.</p><p lang="zh-Hant">結合小波細節、結構先驗、細化與非對稱懲罰，並將事件分析延伸至 Ibex 版圖中的跨網路短路風險。</p></li></ol><figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/toponet-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="1591" height="1005" src="assets/projects/toponet-architecture.png" alt="Figure 2 · TopoNet: detail subbands, structural priors, refinement, and the training-only asymmetric topology loss." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 2 · TopoNet: detail subbands, structural priors, refinement, and the training-only asymmetric topology loss.</span><span lang="zh-Hant">圖 2：TopoNet 的細節子帶、結構先驗、細化頭，以及僅在訓練時使用的非對稱拓樸損失。</span>
+        <a href="reports/toponet-report.pdf#page=18" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 18</span><span lang="zh-Hant">報告 PDF 第 18 頁</span></a>
+      </figcaption>
+    </figure></section>
+      <section class="paper-section" id="results"><h2><span lang="en">Representative results</span><span lang="zh-Hant">代表成果</span></h2>
+        <p lang="en">Both models are trained on the augmented MixSet. Each run is evaluated against the same 571 bridge reference events. Values below are means across three training runs.</p><p lang="zh-Hant">兩模型皆在增強後的 MixSet 訓練，各次評估使用相同 571 個橋接參考事件。下表為三次訓練平均值。</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Results table / 成果比較表"><table class="data project-data"><thead><tr><th scope="col"><span lang="en">Metric</span><span lang="zh-Hant">指標</span></th><th scope="col"><span lang="en">Augmented DOINN</span><span lang="zh-Hant">增強 DOINN</span></th><th scope="col"><span lang="en">TopoNet</span><span lang="zh-Hant">TopoNet</span></th></tr></thead><tbody><tr><th scope="row"><span lang="en">Bridge recall</span><span lang="zh-Hant">橋接 recall</span></th><td>0.8634</td><td>0.9457</td></tr><tr><th scope="row"><span lang="en">Bridge precision</span><span lang="zh-Hant">橋接 precision</span></th><td>0.9829</td><td>0.9453</td></tr><tr><th scope="row"><span lang="en">Bridge F1</span><span lang="zh-Hant">橋接 F1</span></th><td>0.9192</td><td>0.9454</td></tr><tr><th scope="row"><span lang="en">Missed events (FN)</span><span lang="zh-Hant">漏檢事件（FN）</span></th><td>78.00</td><td>31.00</td></tr><tr><th scope="row"><span lang="en">False positives (FP)</span><span lang="zh-Hant">誤報事件（FP）</span></th><td>8.67</td><td>31.33</td></tr><tr><th scope="row"><span lang="en">Parameters</span><span lang="zh-Hant">參數量</span></th><td>211.6 K</td><td>217.6 K</td></tr></tbody></table></div>
+        <div class="table-note"><p lang="en">Report Tables 21–22. The 0.9457 recall is a three-run mean; single-checkpoint ablations and break-event results use separate reporting protocols.</p><p lang="zh-Hant">取自報告表 21–22。0.9457 為三次訓練平均 recall；單一權重的消融與斷裂事件結果採另列的評估方式。</p><a href="reports/toponet-report.pdf#page=35" target="_blank" rel="noopener noreferrer"><span lang="en">View source tables →</span><span lang="zh-Hant">查看原始表格 →</span></a></div>
+        <div class="result-context"><p lang="en">On 194 unperturbed cells, IoU falls from 0.8935 for augmented DOINN to 0.8207 for TopoNet, and slices with topology false positives rise from 4 to 14. The original DOINN reference has IoU 0.9216 and 1 such slice. These results quantify the cost of improved sensitivity.</p><p lang="zh-Hant">在 194 個未擾動 cell 上，增強 DOINN 與 TopoNet 的 IoU 分別為 0.8935 與 0.8207，具有拓樸誤報的切片由 4 個增至 14 個；原版 DOINN 的對應數值為 0.9216 與 1 個。這些結果量化了提高缺陷敏感度的代價。</p></div>
+        <figure class="paper-figure project-figure">
+      <a data-enlarge href="assets/projects/toponet-result.png" target="_blank" rel="noopener noreferrer" aria-label="Open original figure / 開啟原圖">
+        <img width="899" height="864" src="assets/projects/toponet-result.png" alt="Figure 15 · A representative Ibex metal2 electrical-short case, linking layout / net information to the physics reference and simulator predictions." loading="lazy" />
+      </a>
+      <figcaption><span lang="en">Figure 15 · A representative Ibex metal2 electrical-short case, linking layout / net information to the physics reference and simulator predictions.</span><span lang="zh-Hant">圖 15：Ibex metal2 的代表性 electrical-short 案例，對照版圖／net、物理參考與神經模擬器輸出。</span>
+        <a href="reports/toponet-report.pdf#page=40" target="_blank" rel="noopener noreferrer"><span lang="en">Report PDF p. 40</span><span lang="zh-Hant">報告 PDF 第 40 頁</span></a>
+      </figcaption>
+    </figure>
+      </section>
+      <section class="paper-section" id="scope"><h2><span lang="en">Interpretation &amp; scope</span><span lang="zh-Hant">成果解讀與適用範圍</span></h2><p lang="en">Higher bridge recall comes with more false positives and lower fidelity on unperturbed patterns. Morphology stress is a test proxy rather than a complete model of manufacturing variation. Net-aware short-risk mapping is not a validated circuit-failure prediction, and the results do not establish a general replacement for physics simulation.</p><p lang="zh-Hant">較高橋接召回率伴隨更多誤報及未擾動樣本的成像品質下降。形態學壓力測試是代理測試，並非完整製程變異模型；跨網路短路風險映射亦不等同於已驗證的電路功能失效。現有結果尚不足以全面取代物理模擬。</p></section>
+      <section class="paper-section" id="report"><h2><span lang="en">Full report &amp; evidence</span><span lang="zh-Hant">完整報告與對應證據</span></h2>
+        <p lang="en">The summary and figures on this page are drawn from the project report. The full report is in Traditional Chinese; page links below use the PDF page number.</p><p lang="zh-Hant">本頁摘要與圖表整理自專題報告。完整報告為繁體中文；下列連結使用 PDF 檔案頁碼。</p>
+        <ul class="source-links"><li><a href="reports/toponet-report.pdf#page=34" target="_blank" rel="noopener noreferrer"><span lang="en">Tables 21–23 · Defect-level results</span><span lang="zh-Hant">表 21–23：缺陷事件結果</span></a><span><span lang="en">PDF p. 34</span><span lang="zh-Hant">PDF 第 34 頁</span></span></li><li><a href="reports/toponet-report.pdf#page=36" target="_blank" rel="noopener noreferrer"><span lang="en">Table 24 · Unperturbed cells</span><span lang="zh-Hant">表 24：未擾動樣本</span></a><span><span lang="en">PDF p. 36</span><span lang="zh-Hant">PDF 第 36 頁</span></span></li><li><a href="reports/toponet-report.pdf#page=40" target="_blank" rel="noopener noreferrer"><span lang="en">Figure 15 · Ibex short-risk example</span><span lang="zh-Hant">圖 15：Ibex 短路風險案例</span></a><span><span lang="en">PDF p. 40</span><span lang="zh-Hant">PDF 第 40 頁</span></span></li></ul>
+        <a class="btn" href="reports/toponet-report.pdf" target="_blank" rel="noopener noreferrer"><span lang="en">Open complete report</span><span lang="zh-Hant">開啟完整專題報告</span> <span class="file-format">PDF · 55p</span></a>
+      </section>
+      <nav class="related-projects" aria-label="Other projects / 其他專題"><h2><span lang="en">Other projects</span><span lang="zh-Hant">其他專題</span></h2><a href="kalmed-unet.html">KalMed-UNet</a><a href="swin-tk.html">Swin-TransKalman</a><a href="edge-yolo.html">YOLO-CFR / YOLO-LDS</a></nav>
+    </main>
+    <footer class="paper-footer"><p><span lang="en">© 2026 Sheng-Wei Chan · Project summary updated September 28, 2026.</span><span lang="zh-Hant">© 2026 詹盛惟 · 專題摘要更新：2026 年 9 月 28 日。</span></p></footer>
+  </div>
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>

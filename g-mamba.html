@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="preferences.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+
+  <meta name="description" content="G-Mamba explores a Mamba-based module for semantic segmentation. Explore its architecture, experimental results, and IET ICETA 2026 paper." />
+  <title>G-Mamba | Sheng-Wei Chan</title>
+  <link rel="canonical" href="https://henrychan0719.github.io/g-mamba.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Generalizing Geometry-Guided Mamba as a Plug-and-Play Context Module for CNN-based Semantic Segmentation" />
+  <meta property="og:description" content="G-Mamba explores a Mamba-based module for semantic segmentation. Explore its architecture, experimental results, and IET ICETA 2026 paper." />
+  <meta property="og:url" content="https://henrychan0719.github.io/g-mamba.html" />
+  <meta property="og:image" content="https://henrychan0719.github.io/gmamba.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Generalizing Geometry-Guided Mamba as a Plug-and-Play Context Module for CNN-based Semantic Segmentation",
+    "author": [{"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Chun-Po Shen"}, {"@type": "Person", "name": "Chia-Min Lin"}, {"@type": "Person", "name": "Yung-Che Wang"}, {"@type": "Person", "name": "Jen-Shiun Chiang"}],
+    "datePublished": "2026",
+    "url": "https://henrychan0719.github.io/g-mamba.html",
+    "isPartOf": { "@type": "Periodical", "name": "arXiv" }
+  }
+  </script>
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="site.js" defer></script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
+
+      <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="index.html#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
+        <a href="index.html#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
+        <a href="index.html#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="index.html#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+
+      <button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><span lang="en">Menu ☰</span><span lang="zh-Hant">選單 ☰</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language / 語言">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="paper-page">
+
+    <a href="index.html#publications" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span lang="en">All publications</span><span lang="zh-Hant">回到論文列表</span>
+    </a>
+
+    <header class="paper-header">
+      <div class="paper-meta">
+        <span class="badge" lang="en">Accepted</span>
+        <span class="badge" lang="zh-Hant">已接受</span>
+        <span class="area-label" lang="en">Semantic Segmentation</span>
+        <span class="area-label" lang="zh-Hant">語意分割</span>
+      </div>
+
+      <h1>Generalizing Geometry-Guided Mamba as a Plug-and-Play Context Module for CNN-based Semantic Segmentation</h1>
+
+      <p class="authors"><strong>Sheng-Wei Chan</strong>, Hsin-Jui Pan, Chun-Po Shen, Chia-Min Lin, Yung-Che Wang, Jen-Shiun Chiang</p>
+
+      <p class="venue" lang="en">Accepted at IET ICETA 2026 · September 11, 2026.</p>
+      <p class="venue" lang="zh-Hant">IET ICETA 2026 · 2026 年 9 月 11 日接受。</p>
+
+      <div class="button-group">
+          <a href="https://arxiv.org/abs/2606.08866" class="btn" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-lines"></i> arXiv</a>
+          <a href="#" class="btn disabled"><i class="fa-brands fa-github"></i> <span lang="en">Code coming soon</span><span lang="zh-Hant">程式碼即將釋出</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <figure class="paper-figure">
+        <a data-enlarge href="gmamba.png"><img loading="lazy" decoding="async" width="148" height="107" src="gmamba.png" alt="G-Mamba architecture" /></a>
+        <figcaption lang="en">G-Mamba replaces only the context head; the ResNet-101 backbone stays untouched.</figcaption>
+        <figcaption lang="zh-Hant">G-Mamba 只置換上下文模組，ResNet-101 骨幹維持不變。</figcaption>
+      </figure>
+
+      <div class="tldr">
+        <h2><span lang="en">In short</span><span lang="zh-Hant">重點</span></h2>
+        <p lang="en">G-Mamba is the core operator of DGM-Net, and this paper does not propose it as a new method. It is a supplementary analysis addressing one narrower question: does the operator still work once detached from the architecture it was designed for? Replacing only the context head of six established CNN segmentation networks improves all six.</p>
+        <p lang="zh-Hant">G-Mamba 是 DGM-Net 的核心運算子，本篇論文並非把它當作新方法提出。這是一份補充性的分析，只回答一個更窄的問題：這個運算子一旦離開它原本被設計的架構，是否仍然有效？只置換六個成熟 CNN 分割網路的上下文模組，六個全部提升。</p>
+      </div>
+
+      <section class="paper-section">
+        <h2><span lang="en">Why this study exists</span><span lang="zh-Hant">這篇分析的定位</span></h2>
+        <div lang="en">
+          <p>G-Mamba was introduced in <a href="dgm-net.html">DGM-Net</a> as the operator at the centre of
+            that architecture. Nothing new is proposed here. What makes this study worth writing is an
+            attribution problem: DGM-Net changed the context head, the decoder, the loss, and the geometric
+            priors all at once, so a reader cannot tell how much of the improvement belongs to the operator
+            itself.</p>
+          <p>CNN segmentation networks nearly all attach a context head to the backbone — ASPP, PPM, or an
+            attention module — to enlarge the receptive field. These heads are effective but expensive, and
+            attention-based ones tend to leak semantics across object boundaries. If the geometry-guided
+            operator has independent value, it should be visible when it replaces those heads and nothing
+            else changes.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>G-Mamba 是在 <a href="dgm-net.html">DGM-Net</a> 中提出的，位於該架構的核心。
+            本篇沒有提出任何新東西。這份分析之所以值得寫，是因為一個歸因問題：
+            DGM-Net 同時改動了上下文模組、解碼器、損失函數與幾何先驗，
+            讀者無從判斷其中有多少改善該歸功於這個運算子本身。</p>
+          <p>CNN 分割網路幾乎都會在骨幹之後外掛一個上下文模組——ASPP、PPM 或注意力模組——來擴大感受野。
+            這些模組確實有效，但成本高昂，而基於注意力的版本還容易造成語義跨越邊界洩漏。
+            如果幾何導引的運算子具有獨立價值，那麼在只置換這些模組、其餘完全不動的條件下，它應該看得出來。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">The protocol</span><span lang="zh-Hant">實驗協定</span></h2>
+        <div lang="en">
+          <p>G-Mamba is inserted into six CNN architectures by replacing <em>only</em> the original
+            context head: ASPP in DeepLabV3+, PPM in PSPNet, dual attention in DANet, criss-cross
+            attention in CCNet, point-wise spatial attention in PSANet, and object-contextual aggregation
+            in OCRNet. The ResNet-101 backbone, crop size, output stride, and training schedule are held
+            identical across all conditions.</p>
+          <p>Inside the module, the geometric prompt reweights features before the selective scan, so scan
+            intensity follows boundary and centripetal-flow cues instead of a uniform raster path. The
+            Cascade variant runs standard multi-directional scans first to build macro semantics, then
+            applies the geometric prompt as a precision filter on the final stage.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>G-Mamba 被插入六個 CNN 架構，且<em>只</em>置換原本的上下文模組：DeepLabV3+ 的 ASPP、
+            PSPNet 的 PPM、DANet 的雙重注意力、CCNet 的十字交叉注意力、PSANet 的點式空間注意力，
+            以及 OCRNet 的物件上下文聚合。所有條件下，ResNet-101 骨幹、裁切尺寸、輸出步幅與訓練排程完全一致。</p>
+          <p>在模組內部，幾何提示會在選擇性掃描之前重新加權特徵，使掃描強度依循邊界與向心流的線索，
+            而非均勻的光柵路徑。Cascade 版本則先執行標準的多方向掃描以建立宏觀語義，
+            最後一個階段才把幾何提示當作精修濾波器施加上去。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">Results</span><span lang="zh-Hant">實驗結果</span></h2>
+        <div class="table-wrap" lang="en">
+          <table class="data">
+            <caption>Cityscapes validation mIoU. ResNet-101, OS=8, crop 768&times;768, batch 4, single RTX 3080 Ti.</caption>
+            <thead><tr><th>Architecture</th><th>Baseline</th><th>+ G-Mamba</th><th>+ Cascade</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>75.17</td><td>76.58</td><td>77.57</td></tr>
+              <tr><td>DANet</td><td>76.32</td><td>78.49</td><td>79.16</td></tr>
+              <tr><td>CCNet</td><td>75.54</td><td>77.83</td><td>78.81</td></tr>
+              <tr><td>PSPNet</td><td>77.52</td><td>78.76</td><td>79.42</td></tr>
+              <tr><td>PSANet</td><td>76.79</td><td>77.02</td><td>77.23</td></tr>
+              <tr><td>OCRNet</td><td>78.22</td><td>79.01</td><td>79.57</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" lang="zh-Hant">
+          <table class="data">
+            <caption>Cityscapes 驗證集 mIoU。ResNet-101、OS=8、裁切 768&times;768、batch 4，單張 RTX 3080 Ti。</caption>
+            <thead><tr><th>架構</th><th>原始</th><th>+ G-Mamba</th><th>+ Cascade</th></tr></thead>
+            <tbody>
+              <tr><td>DeepLabV3+</td><td>75.17</td><td>76.58</td><td>77.57</td></tr>
+              <tr><td>DANet</td><td>76.32</td><td>78.49</td><td>79.16</td></tr>
+              <tr><td>CCNet</td><td>75.54</td><td>77.83</td><td>78.81</td></tr>
+              <tr><td>PSPNet</td><td>77.52</td><td>78.76</td><td>79.42</td></tr>
+              <tr><td>PSANet</td><td>76.79</td><td>77.02</td><td>77.23</td></tr>
+              <tr><td>OCRNet</td><td>78.22</td><td>79.01</td><td>79.57</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div lang="en">
+          <p>Every baseline improves, and the Cascade variant improves on the plain one in every case.
+            The largest gains land on DANet (+2.84 with Cascade) and CCNet (+3.27) — both
+            attention-based context heads. This is the more useful finding: the operator is not merely a
+            cheaper ASPP, and its value does not depend on the rest of the DGM-Net architecture being
+            present.</p>
+          <p>The cost is modest. At 1024&nbsp;&times;&nbsp;1024, adding G-Mamba increases computation by
+            33 to 51 GFLOPs depending on the host, against original footprints of roughly 1,000 to 1,300
+            GFLOPs.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>六個基線全部提升，而且 Cascade 版本在每一個案例中都優於單層版本。
+            增益最大的是 DANet（Cascade 下 +2.84）與 CCNet（+3.27）——兩者都是基於注意力的上下文模組。
+            這是更有用的發現：這個運算子不只是一個比較便宜的 ASPP，
+            而且它的價值並不依賴 DGM-Net 架構的其餘部分存在。</p>
+          <p>代價相當溫和。在 1024&nbsp;&times;&nbsp;1024 解析度下，加入 G-Mamba 會依宿主架構不同增加 33 到 51 GFLOPs，
+            而這些架構原本的運算量約在 1,000 至 1,300 GFLOPs 之間。</p>
+        </div>
+      </section>
+
+      <section class="paper-section">
+        <h2><span lang="en">Limitations</span><span lang="zh-Hant">限制</span></h2>
+        <p lang="en">This is a short, deliberately narrow study: two pages, one dataset, one backbone. Parameter counts, latency, and memory profiling are not reported, and evaluation on ADE20K and on lightweight backbones remains to be done. The claim is only that the operator transfers as a context module; the operator itself, and the geometric priors that drive it, belong to DGM-Net.</p>
+        <p lang="zh-Hant">這是一篇刻意寫得很窄的短論文：兩頁、一個資料集、一個骨幹網路。參數量、延遲與記憶體剖析都尚未報告，在 ADE20K 與輕量骨幹上的評估也還沒做。本文主張的僅止於「這個運算子可以作為上下文模組被遷移」；運算子本身，以及驅動它的幾何先驗，都屬於 DGM-Net。</p>
+      </section>
+
+      <section class="paper-section">
+        <div class="section-head">
+          <h2><span lang="en">Cite</span><span lang="zh-Hant">引用</span></h2>
+          <button type="button" class="copy-btn" data-copy-target="bibtex">
+            <i class="fa-regular fa-copy"></i>
+            <span lang="en">Copy BibTeX</span><span lang="zh-Hant">複製 BibTeX</span>
+          </button>
+        </div>
+        <div class="bibtex" id="bibtex">@inproceedings{chan2026gmamba,
+  title     = {Generalizing Geometry-Guided Mamba as a Plug-and-Play Context
+               Module for CNN-based Semantic Segmentation},
+  author    = {Chan, Sheng-Wei and Pan, Hsin-Jui and Shen, Chun-Po and
+               Lin, Chia-Min and Wang, Yung-Che and Chiang, Jen-Shiun},
+  booktitle = {arXiv preprint arXiv:2606.08866},
+  year      = {2026}
+}</div>
+      </section>
+
+    </main>
+
+    <footer class="paper-footer">
+      <a href="index.html#publications" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span lang="en">All publications</span><span lang="zh-Hant">回到論文列表</span>
+      </a>
+    </footer>
+
+  </div>
+
+  
+
+  
+
+
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-header"><h2 id="image-dialog-title">Image</h2><button type="button" class="dialog-close" data-dialog-close autofocus><span lang="en">Close ✕</span><span lang="zh-Hant">關閉 ✕</span></button></div>
+    <img alt="" />
+    <a data-dialog-destination hidden target="_blank" rel="noopener noreferrer"></a>
+    <p><span lang="en">Press Esc or use Close to return.</span><span lang="zh-Hant">按 Esc 或「關閉」返回頁面。</span></p>
+  </dialog>
+
+</body>
+</html>
