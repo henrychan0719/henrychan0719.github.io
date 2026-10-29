@@ -7,7 +7,7 @@
   
   <title>YOLO-CFR / YOLO-LDS | Sheng-Wei Chan</title>
   <meta name="description" content="Compare feature reuse and lightweight downsampling on Raspberry Pi 5. LDS cuts exported FLOPs by 10.9% and measured NCNN inference latency by 4.9%." />
-  <link rel="canonical" href="https://henrychan0719.github.io/edge-yolo.html" />
+  <link rel="canonical" href="https://shengweichan.com/edge-yolo.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,12 +18,12 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices" />
   <meta property="og:description" content="Compare feature reuse and lightweight downsampling on Raspberry Pi 5. LDS cuts exported FLOPs by 10.9% and measured NCNN inference latency by 4.9%." />
-  <meta property="og:url" content="https://henrychan0719.github.io/edge-yolo.html" />
-  <meta property="og:image" content="https://henrychan0719.github.io/assets/projects/yolo-architecture.png" />
+  <meta property="og:url" content="https://shengweichan.com/edge-yolo.html" />
+  <meta property="og:image" content="https://shengweichan.com/assets/projects/yolo-architecture.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="projects.css" />
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices", "alternateName": "延遲導向輕量化 YOLO 於邊緣裝置之即時影像感知", "description": "This project investigates whether lightweight modifications to YOLO26n translate into practical speed gains on the ARM CPU of Raspberry Pi 5. Cross-stage Feature Reuse (CFR) combines Ghost bottlenecks with branch fusion; Lightweight Downsampling (LDS) uses GhostConv followed by ECA at selected downsampling stages. The main models are trained on PASCAL VOC for 100 epochs with three random seeds and exported through ONNX and NCNN FP32 workflows. CFR reaches mean mAP50–95 of 0.5014 versus 0.4854 for baseline, but NCNN inference latency rises from 61.11 to 74.74 ms. LDS reaches 0.4851 mAP50–95, reduces exported FLOPs by 10.9%, and lowers NCNN latency by 4.9% to 58.14 ms. The results distinguish theoretical computation from measured deployment cost.", "url": "https://henrychan0719.github.io/edge-yolo.html", "author": [{"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://henrychan0719.github.io/reports/edge-yolo-report.pdf"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Latency-Oriented Lightweight YOLO for Real-Time Visual Perception on Edge Devices", "alternateName": "延遲導向輕量化 YOLO 於邊緣裝置之即時影像感知", "description": "This project investigates whether lightweight modifications to YOLO26n translate into practical speed gains on the ARM CPU of Raspberry Pi 5. Cross-stage Feature Reuse (CFR) combines Ghost bottlenecks with branch fusion; Lightweight Downsampling (LDS) uses GhostConv followed by ECA at selected downsampling stages. The main models are trained on PASCAL VOC for 100 epochs with three random seeds and exported through ONNX and NCNN FP32 workflows. CFR reaches mean mAP50–95 of 0.5014 versus 0.4854 for baseline, but NCNN inference latency rises from 61.11 to 74.74 ms. LDS reaches 0.4851 mAP50–95, reduces exported FLOPs by 10.9%, and lowers NCNN latency by 4.9% to 58.14 ms. The results distinguish theoretical computation from measured deployment cost.", "url": "https://shengweichan.com/edge-yolo.html", "author": [{"@type": "Person", "name": "Hsin-Jui Pan"}, {"@type": "Person", "name": "Sheng-Wei Chan"}, {"@type": "Person", "name": "Chun-Po Shen"}], "inLanguage": ["en", "zh-Hant"], "genre": "Undergraduate capstone project report", "dateModified": "2026-09-28", "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://shengweichan.com/reports/edge-yolo-report.pdf"}}</script>
   <link rel="stylesheet" href="enhancements.css" />
   <script src="site.js" defer></script>
 </head>
