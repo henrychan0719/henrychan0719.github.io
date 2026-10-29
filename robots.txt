@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://henrychan0719.github.io/sitemap.xml
+Sitemap: https://shengweichan.com/sitemap.xml
