@@ -247,3 +247,9 @@ html[data-lang="zh"] .hero-research h1 { font-size: clamp(30px, 3.1vw, 43px); li
   .hero-feature { background: #fff; box-shadow: none; border: 1px solid #999; }
   .hero-feature, .hero-feature h2, .hero .hero-feature-venue, .hero .hero-feature-description, .hero .hero-feature-context, .hero-feature-metrics dt, .hero-feature-metrics dd, .hero-feature-link, .hero-feature-top, .hero-feature-index { color: #111; }
 }
+
+/* Google Scholar citation and h-index badges. */
+.scholar-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.scholar-badges a { display: inline-flex; align-items: center; min-height: 32px; text-decoration: none; }
+.scholar-badges img { display: block; height: 24px; width: auto; max-width: 100%; }
+.scholar-badges a:hover { opacity: .85; }
