@@ -169,3 +169,12 @@ html[data-lang="zh"] .hero h1 { letter-spacing: -.7px; line-height: 1.4; }
   .admissions-details > :not(summary), .news-archive > :not(summary) { display: block; }
   .news-archive .news-box { max-height: none; overflow: visible; }
 }
+
+/* Keep the shorter status lists together beside interview results. */
+.admissions-grid { grid-template-rows: auto 1fr; }
+.admission-group.interview { grid-column: 2; grid-row: 1 / span 2; }
+.admission-group.waitlist { grid-column: 1; grid-row: 2; }
+@media (max-width: 650px) {
+  .admissions-grid { grid-template-rows: none; }
+  .admission-group.interview, .admission-group.waitlist { grid-column: auto; grid-row: auto; }
+}
