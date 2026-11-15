@@ -121,3 +121,51 @@ html[data-lang="zh"] .hero h1 { letter-spacing: -.7px; line-height: 1.4; }
   .text-button, .menu-toggle, .back-top, .site-status, .image-dialog, .skip-link { display: none !important; }
   .profile-link-card { break-inside: avoid; }
 }
+
+/* Homepage admissions, compact profiles, and publication housekeeping. */
+.home-news { margin-top: 0; padding-top: 22px; }
+.home-news > h2 { margin-bottom: 18px; }
+.admissions-update { border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; background: var(--surface); }
+.admissions-heading { display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.admissions-heading time { font: 12px var(--mono); color: var(--muted); }
+.admissions-heading h3 { margin: 0; font-size: 17px; line-height: 1.6; }
+.admissions-summary { display: flex; flex-wrap: wrap; gap: 12px 24px; list-style: none; margin: 14px 0 18px; padding: 0; }
+.admissions-summary li { display: flex; align-items: baseline; gap: 7px; font-size: 12px; color: var(--muted); }
+.admissions-summary strong { font: 600 20px var(--mono); color: var(--ink); }
+.admissions-details > summary, .news-archive > summary, .profile-qr-details > summary { width: fit-content; cursor: pointer; color: var(--accent); font-size: 12px; line-height: 1.8; }
+.admissions-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 22px; margin-top: 20px; }
+.admission-group { min-width: 0; padding-top: 14px; border-top: 2px solid var(--line); }
+.admission-group.priority, .admission-group.admitted { border-top-color: var(--accent); }
+.admission-group h4 { display: flex; align-items: baseline; gap: 9px; font-size: 14px; margin: 0 0 15px; }
+.admission-count { color: var(--muted); font: 12px var(--mono); }
+.admission-school + .admission-school { margin-top: 17px; }
+.admission-school h5 { margin: 0 0 6px; font-size: 13px; font-weight: 600; line-height: 1.6; }
+.admission-school ul { margin: 0; padding-left: 17px; }
+.admission-school li { font-size: 12px; line-height: 1.9; color: var(--muted); overflow-wrap: anywhere; }
+.admission-school time { display: block; font: 11px/1.8 var(--mono); }
+.news-archive { margin-top: 14px; }
+.news-archive > summary { color: var(--muted); }
+.news-archive .news-box { margin-top: 12px; }
+.compact-profiles { margin: 26px 0 32px; }
+.compact-profiles .hub-heading { padding-top: 15px; margin-bottom: 12px; }
+.compact-profiles .profile-links-grid { align-items: start; gap: 12px; }
+.compact-profiles .profile-link-card { padding: 15px 18px; }
+.compact-profiles .profile-card-header { margin-bottom: 9px; }
+.compact-profiles .profile-card-header h3 { font-size: 15px; }
+.compact-profiles .profile-card-header p { font-size: 11px; margin-top: 4px; }
+.compact-profiles .profile-qr-row { margin-top: 12px; padding-top: 12px; }
+.publication-card.publication-card-compact { display: block; padding: 23px 0; }
+.publication-card-compact .paper-info h3 { margin-bottom: 7px; }
+.publication-card-compact .paper-info .venue { margin-bottom: 0; }
+@media (max-width: 650px) {
+  .admissions-update { padding: 17px; }
+  .admissions-heading { gap: 5px 12px; }
+  .admissions-heading h3 { font-size: 16px; }
+  .admissions-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+  .admissions-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .compact-profiles .profile-link-card { padding: 15px 17px; }
+}
+@media print {
+  .admissions-details > :not(summary), .news-archive > :not(summary) { display: block; }
+  .news-archive .news-box { max-height: none; overflow: visible; }
+}
