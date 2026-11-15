@@ -79,7 +79,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="enhancements.css?v=20261115-scholar" />
+  <link rel="stylesheet" href="enhancements.css?v=20261115-overview" />
   <script src="site.js" defer></script>
 </head>
 
@@ -92,9 +92,9 @@
       <a href="#home" class="brand"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></a>
 
       <nav id="primary-nav" aria-label="Main navigation / 主要導覽">
+        <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
         <a href="#publications"><span lang="en">Publications</span><span lang="zh-Hant">論文</span></a>
         <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專題</span></a>
-        <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
         <a href="#research"><span lang="en">Research</span><span lang="zh-Hant">研究</span></a>
         <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
       </nav>
@@ -171,6 +171,23 @@
             <a href="https://orcid.org/0009-0002-3983-5163" target="_blank" rel="noopener noreferrer">ORCID</a>
           </li>
         </ul>
+        <details class="sidebar-sharing" id="profiles">
+          <summary><span lang="en">Profile QR codes</span><span lang="zh-Hant">個人檔案 QR Code</span></summary>
+          <div class="sidebar-qr-grid">
+            <div class="sidebar-qr-item">
+              <span class="sidebar-qr-label">Google Scholar</span>
+              <a href="assets/profiles/google-scholar-qr.svg" class="qr-thumbnail" data-enlarge data-title="Google Scholar · QR Code" data-destination="https://scholar.google.com/citations?user=Gr3mhHUAAAAJ" aria-label="Enlarge Google Scholar QR Code / 放大 Google Scholar QR Code"><img width="82" height="82" src="assets/profiles/google-scholar-qr.svg" alt="Google Scholar QR Code" loading="lazy" /></a>
+              <a href="assets/profiles/google-scholar-qr.png" download="Sheng-Wei-Chan-Google-Scholar-QR.png"><span lang="en">Download PNG</span><span lang="zh-Hant">下載 PNG</span></a>
+              <button class="text-button" type="button" data-copy-value="https://scholar.google.com/citations?user=Gr3mhHUAAAAJ"><span lang="en">Copy link</span><span lang="zh-Hant">複製網址</span></button>
+            </div>
+            <div class="sidebar-qr-item">
+              <span class="sidebar-qr-label">GitHub</span>
+              <a href="assets/profiles/github-qr.svg" class="qr-thumbnail" data-enlarge data-title="GitHub · QR Code" data-destination="https://github.com/henrychan0719" aria-label="Enlarge GitHub QR Code / 放大 GitHub QR Code"><img width="82" height="82" src="assets/profiles/github-qr.svg" alt="GitHub QR Code" loading="lazy" /></a>
+              <a href="assets/profiles/github-qr.png" download="Sheng-Wei-Chan-GitHub-QR.png"><span lang="en">Download PNG</span><span lang="zh-Hant">下載 PNG</span></a>
+              <button class="text-button" type="button" data-copy-value="https://github.com/henrychan0719"><span lang="en">Copy link</span><span lang="zh-Hant">複製網址</span></button>
+            </div>
+          </div>
+        </details>
       </div>
     </aside>
 
@@ -178,36 +195,77 @@
     <main class="content" id="main">
 
       <!-- Hero -->
-      <section class="hero hero-research" aria-labelledby="hero-heading">
-        <div class="hero-main">
-          <div class="hero-copy">
-            <p class="hero-label"><span class="hero-label-rule" aria-hidden="true"></span>SHENG-WEI CHAN <span aria-hidden="true">/</span> <span lang="en">RESEARCH PORTFOLIO</span><span lang="zh-Hant">研究成果</span></p>
-            <h1 id="hero-heading"><span lang="en">Designing efficient<br /><em>visual models.</em></span><span lang="zh-Hant">為視覺理解，<br /><em>設計高效模型。</em></span></h1>
-            <p class="hero-intro"><span lang="en">I’m Sheng-Wei Chan, an undergraduate researcher at Tamkang University’s AMOS Laboratory. I study segmentation, document analysis, and model architecture design, with applications in medical imaging and edge deployment.</span><span lang="zh-Hant">我是詹盛惟，淡江大學電機系、AMOS 實驗室的大學部研究人員。研究語意分割、文件影像分析與模型架構設計，並將方法延伸至醫學影像與邊緣部署。</span></p>
+      <section class="hero hero-overview" aria-labelledby="hero-heading">
+        <div class="overview-main">
+          <div class="overview-copy">
+            <p class="hero-label"><span class="overview-rule" aria-hidden="true"></span><span lang="en">UNDERGRADUATE RESEARCHER · AMOS LAB</span><span lang="zh-Hant">大學部研究人員 · AMOS 實驗室</span></p>
+            <h1 id="hero-heading"><span lang="en">Sheng-Wei Chan</span><span lang="zh-Hant">詹盛惟</span></h1>
+            <p class="overview-name" lang="zh-Hant">Sheng-Wei Chan</p>
+            <p class="overview-focus"><span lang="en">Computer vision &amp;<br />efficient model design.</span><span lang="zh-Hant">電腦視覺與高效模型設計</span></p>
+            <p class="hero-intro"><span lang="en">I study how visual models extract, fuse, and update information. My work spans segmentation and document analysis, with applications in medical imaging and edge deployment.</span><span lang="zh-Hant">我研究視覺模型如何擷取、融合與更新資訊，從語意分割、文件影像分析，延伸至醫學影像與邊緣部署。</span></p>
+            <p class="overview-affiliation"><span lang="en">Electrical Engineering · Tamkang University</span><span lang="zh-Hant">淡江大學 · 電機工程學系</span></p>
             <div class="hero-buttons">
               <a href="#publications" class="hero-btn primary"><span lang="en">Explore publications ↓</span><span lang="zh-Hant">瀏覽論文著作 ↓</span></a>
-              <a href="#projects" class="hero-project-link"><span lang="en">Selected projects ↗</span><span lang="zh-Hant">專題成果 ↗</span></a>
+              <a href="#projects" class="overview-project-link"><span lang="en">Selected projects ↗</span><span lang="zh-Hant">專題成果 ↗</span></a>
             </div>
           </div>
-          <article class="hero-feature" aria-labelledby="hero-feature-title">
-            <div class="hero-feature-top"><span lang="en">FEATURED RESEARCH</span><span lang="zh-Hant">代表研究</span><span class="hero-feature-index" aria-hidden="true">01 /</span></div>
-            <p class="hero-feature-venue"><span lang="en">IET ICETA 2026 · Accepted</span><span lang="zh-Hant">IET ICETA 2026 · 已接受</span></p>
-            <h2 id="hero-feature-title">MambaPSA</h2>
-            <p class="hero-feature-description"><span lang="en">Lightweight state space modeling for efficient YOLO26 object detection.</span><span lang="zh-Hant">以輕量狀態空間模組改良 YOLO26，探索物件偵測的效率與精度取捨。</span></p>
-            <dl class="hero-feature-metrics">
-              <div><dt>FLOPs</dt><dd>−12.1<span>%</span></dd></div>
-              <div><dt><span lang="en">CPU inference speed</span><span lang="zh-Hant">CPU 推論速度</span></dt><dd>+17.6<span>%</span></dd></div>
-            </dl>
-            <p class="hero-feature-context"><span lang="en">PASCAL VOC · vs. YOLO26 baseline<br />Parameters −2.9% · mAP50:95 −0.1 point</span><span lang="zh-Hant">PASCAL VOC · 相對 YOLO26 基準<br />參數 −2.9% · mAP50:95 降低 0.1 點</span></p>
-            <a href="mambapsa.html" class="hero-feature-link"><span lang="en">Read the research</span><span lang="zh-Hant">閱讀研究介紹</span><span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-        <div class="hero-evidence" aria-label="Research highlights / 研究摘要">
-          <a href="#publications"><strong>04</strong><span class="hero-evidence-text"><span class="hero-evidence-label"><span lang="en">Accepted papers</span><span lang="zh-Hant">已接受論文</span></span><span class="hero-evidence-detail">ISPACS · IET ICETA · ICDAR Workshop</span></span></a>
-          <a href="#awards"><strong>NSTC</strong><span class="hero-evidence-text"><span class="hero-evidence-label"><span lang="en">Undergraduate research grant</span><span lang="zh-Hant">國科會大專學生研究計畫</span></span><span class="hero-evidence-detail"><span lang="en">ADM-Net · Semantic segmentation</span><span lang="zh-Hant">ADM-Net · 語意分割</span></span></span></a>
-          <a href="#about"><strong>TPC</strong><span class="hero-evidence-text"><span class="hero-evidence-label"><span lang="en">Reviewer</span><span lang="zh-Hant">論文審稿人</span></span><span class="hero-evidence-detail">ISPACS 2026</span></span></a>
+          <div class="research-overview" aria-label="Research overview / 研究概覽">
+            <p class="overview-kicker"><span lang="en">RESEARCH AT A GLANCE</span><span lang="zh-Hant">研究概覽</span></p>
+            <div class="overview-counts">
+              <a href="#publications"><strong>04</strong><span lang="en">Accepted papers</span><span lang="zh-Hant">已接受論文</span></a>
+              <a href="#publications"><strong>02</strong><span lang="en">Papers under review</span><span lang="zh-Hant">審查中論文</span></a>
+            </div>
+            <p class="overview-venues">ISPACS · IET ICETA · ICDAR Workshop</p>
+            <a href="#projects" class="overview-entry"><span class="overview-entry-label"><span lang="en">Selected projects</span><span lang="zh-Hant">精選專題</span><span aria-hidden="true">↗</span></span><strong>Swin-TransKalman<br />YOLO-CFR / YOLO-LDS</strong></a>
+            <a href="#awards" class="overview-entry"><span class="overview-entry-label"><span lang="en">Research funding</span><span lang="zh-Hant">研究補助</span><span aria-hidden="true">↗</span></span><strong><span lang="en">NSTC Undergraduate Research Grant</span><span lang="zh-Hant">國科會大專學生研究計畫</span></strong><span class="overview-entry-detail">ADM-Net</span></a>
+            <a href="#about" class="overview-entry"><span class="overview-entry-label"><span lang="en">Academic service</span><span lang="zh-Hant">學術服務</span><span aria-hidden="true">↗</span></span><strong>ISPACS 2026 · TPC Reviewer</strong></a>
+          </div>
         </div>
       </section>
+
+      <section id="about" class="section">
+        <h2><span lang="en">About</span><span lang="zh-Hant">關於我</span></h2>
+        <div lang="en">
+          <p>I am a fourth-year undergraduate in the Department of Electrical and Computer Engineering at Tamkang University. I conduct computer vision and deep learning research in the AMOS Laboratory under the supervision of Professor Jen-Shiun Chiang.</p>
+          <p>Through papers and undergraduate research projects, I have gained experience in model design, implementation, training and evaluation, and academic writing. I identify research questions by comparing the literature and examining experimental observations, propose ideas, and develop them into testable models and experiments with my advisor and collaborators. My work uses CNN, Transformer, and Mamba architectures and explores the integration of state estimation with neural networks, including Kalman-inspired feature fusion for 3D organ and tumor segmentation.</p>
+          <p>My research has been accepted at ISPACS 2026 and IET ICETA 2026, and my semantic segmentation research is supported by an Undergraduate Research Grant from Taiwan’s National Science and Technology Council. I also serve as a TPC Reviewer for ISPACS 2026, reviewing research submissions.</p>
+          <p>My current work focuses on ADM-Net for semantic segmentation and streaming 3D point cloud semantic segmentation. I study adaptive feature fusion and high-resolution detail preservation in ADM-Net, and cross-frame memory to complement incomplete LiDAR observations.</p>
+        </div>
+        <div lang="zh-Hant">
+          <p>我目前就讀於淡江大學電機工程學系四年級，於 AMOS 實驗室進行電腦視覺與深度學習研究，指導教授為江正雄教授。</p>
+          <p>大學期間，我持續參與論文與專題研究，累積模型設計、程式實作、訓練評估與論文撰寫的經驗。我習慣從文獻比較與實驗觀察中尋找研究問題，主動提出構想，再與指導教授及合作夥伴討論，將想法落實為可驗證的模型與實驗。在方法上，我運用 CNN、Transformer 與 Mamba 等深度學習架構，也探索狀態估計方法與神經網路的結合，例如將受卡爾曼濾波啟發的特徵融合用於三維器官與腫瘤分割。</p>
+          <p>目前已有研究成果獲 ISPACS 2026 與 IET ICETA 2026 接受，語意分割相關研究亦獲國科會大專學生研究計畫補助。我也擔任 ISPACS 2026 論文審稿人（TPC Reviewer），參與研究論文的審查工作。</p>
+          <p>目前，我主要進行 ADM-Net 語意分割與串流三維點雲語意分割研究，分別探索自適應特徵融合與高解析度細節保留，以及利用跨幀記憶補足 LiDAR 的不完整觀測。</p>
+        </div>
+        <div class="tag-group">
+<span lang="en">Computer Vision</span><span lang="zh-Hant">電腦視覺</span>
+<span lang="en">Model Architecture</span><span lang="zh-Hant">模型架構設計</span>
+<span lang="en">Feature Fusion</span><span lang="zh-Hant">特徵融合</span>
+<span lang="en">Sequence Modeling</span><span lang="zh-Hant">序列建模</span>
+<span lang="en">State Estimation</span><span lang="zh-Hant">狀態估計</span>
+<span lang="en">Edge Deployment</span><span lang="zh-Hant">邊緣部署</span>
+        </div>
+      </section>
+
+      <section id="admissions" class="section">
+  <h2><span lang="en">Graduate Admissions</span><span lang="zh-Hant">推薦甄試專區</span></h2>
+  <p class="section-note"><span lang="en">Results from the 2027 master’s admissions cycle, grouped by current status.</span><span lang="zh-Hant">記錄各校系所的優先錄取、正取、面試資格與備取結果。</span></p>
+  <article class="admissions-update">
+    <div class="admissions-heading"><h3><span lang="en">2027 master’s admissions</span><span lang="zh-Hant">116 學年度碩士班甄試</span></h3></div>
+    <ul class="admissions-summary" aria-label="Admissions progress / 甄試進度"><li><strong>4</strong><span lang="en">Priority &amp; regular admission</span><span lang="zh-Hant">優先錄取與正取</span></li><li><strong>11</strong><span lang="en">Interview eligibility</span><span lang="zh-Hant">獲面試資格</span></li><li><strong>3</strong><span lang="en">Waitlisted</span><span lang="zh-Hant">備取</span></li></ul>
+    <details class="admissions-details"><summary><span lang="en">View universities and programs</span><span lang="zh-Hant">查看各校系所結果</span></summary><div class="admissions-grid"><section class="admission-group priority" aria-labelledby="admission-priority"><h4 id="admission-priority"><span lang="en">Priority &amp; regular admission</span><span lang="zh-Hant">優先錄取與正取</span> <span class="admission-count">4</span></h4><div class="admission-school"><h5><span lang="en">National Yang Ming Chiao Tung University</span><span lang="zh-Hant">國立陽明交通大學</span> <span class="university-abbr">(NYCU)</span></h5><p class="admission-status"><span lang="en">Admitted</span><span lang="zh-Hant">正取</span></p><ul><li><span lang="en">Master’s program in artificial intelligence and green energy technology</span><span lang="zh-Hant">人工智慧與綠能科技研究所碩士班</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Chung Cheng University</span><span lang="zh-Hant">國立中正大學</span> <span class="university-abbr">(CCU)</span></h5><p class="admission-status"><span lang="en">Priority admission</span><span lang="zh-Hant">優先錄取</span></p><ul><li><span lang="en">Electrical engineering — Signal and Intelligent Computing</span><span lang="zh-Hant">電機工程學系碩士班－信號與智慧計算組</span></li><li><span lang="en">Electrical engineering — Interdisciplinary Intelligent Technology (AI)</span><span lang="zh-Hant">電機工程學系碩士班－跨領域智慧科技（AI）組</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Taiwan University of Science and Technology</span><span lang="zh-Hant">國立臺灣科技大學</span> <span class="university-abbr">(NTUST)</span></h5><p class="admission-status"><span lang="en">Priority admission</span><span lang="zh-Hant">優先錄取</span></p><ul><li><span lang="en">Graduate Institute of AI Cross-disciplinary Technology</span><span lang="zh-Hant">人工智慧跨域科技研究所碩士班</span></li></ul></div></section>
+<section class="admission-group interview" aria-labelledby="admission-interview"><h4 id="admission-interview"><span lang="en">Interview eligibility</span><span lang="zh-Hant">獲面試資格</span> <span class="admission-count">11</span></h4><div class="admission-school"><h5><span lang="en">National Taiwan University</span><span lang="zh-Hant">國立臺灣大學</span> <span class="university-abbr">(NTU)</span></h5><ul><li><span lang="en">Communication engineering — Group C (丙)</span><span lang="zh-Hant">電信工程學研究所碩士班丙組</span></li><li><span lang="en">Artificial intelligence</span><span lang="zh-Hant">人工智慧研究所碩士班</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Sun Yat-sen University</span><span lang="zh-Hant">國立中山大學</span> <span class="university-abbr">(NSYSU)</span></h5><ul><li><span lang="en">Electrical engineering — Group C (丙)</span><span lang="zh-Hant">電機工程學系碩士班丙組</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Chung Hsing University</span><span lang="zh-Hant">國立中興大學</span> <span class="university-abbr">(NCHU)</span></h5><ul><li><span lang="en">Electrical engineering — Group A (甲)</span><span lang="zh-Hant">電機工程學系碩士班甲組</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Chung Cheng University</span><span lang="zh-Hant">國立中正大學</span> <span class="university-abbr">(CCU)</span></h5><ul><li><span lang="en">Electrical engineering — Computer Engineering</span><span lang="zh-Hant">電機工程學系碩士班－計算機工程組</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Taiwan University of Science and Technology</span><span lang="zh-Hant">國立臺灣科技大學</span> <span class="university-abbr">(NTUST)</span></h5><ul><li><span lang="en">Electrical engineering — Group C (丙)</span><span lang="zh-Hant">電機工程系碩士班丙組</span></li><li><span lang="en">Electrical engineering — Group E (戊)</span><span lang="zh-Hant">電機工程系碩士班戊組</span></li><li><span lang="en">Electrical engineering — AI group</span><span lang="zh-Hant">電機工程系碩士班 AI 組</span></li><li><span lang="en">Computer science and information engineering</span><span lang="zh-Hant">資訊工程系碩士班</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Taipei University of Technology</span><span lang="zh-Hant">國立臺北科技大學</span> <span class="university-abbr">(NTUT)</span></h5><ul><li><span lang="en">Electrical engineering — Group E (戊)</span><span lang="zh-Hant">電機工程系碩士班戊組</span></li><li><span lang="en">Electronic engineering — Group A (甲)</span><span lang="zh-Hant">電子工程系碩士班甲組</span></li></ul></div></section>
+<section class="admission-group waitlist" aria-labelledby="admission-waitlist"><h4 id="admission-waitlist"><span lang="en">Waitlisted</span><span lang="zh-Hant">備取</span> <span class="admission-count">3</span></h4><div class="admission-school"><h5><span lang="en">National Tsing Hua University</span><span lang="zh-Hant">國立清華大學</span> <span class="university-abbr">(NTHU)</span></h5><ul><li><span lang="en">Power mechanical engineering — Group G (庚)</span><span lang="zh-Hant">動力機械工程學系碩士班庚組</span></li></ul></div>
+<div class="admission-school"><h5><span lang="en">National Yang Ming Chiao Tung University</span><span lang="zh-Hant">國立陽明交通大學</span> <span class="university-abbr">(NYCU)</span></h5><ul><li><span lang="en">Data science and engineering</span><span lang="zh-Hant">數據科學與工程研究所碩士班</span></li><li><span lang="en">Intelligent systems</span><span lang="zh-Hant">智能系統研究所碩士班</span></li></ul></div></section></div></details>
+  </article>
+</section>
       <section id="news" class="section">
   <h2><span lang="en">News</span><span lang="zh-Hant">最新消息</span></h2>
   <div class="news-box"><ul>
@@ -243,39 +301,6 @@
             </li>
           </ul></div>
 </section>
-      <section id="profiles" class="profile-hub compact-profiles" aria-labelledby="profiles-heading">
-  <div class="hub-heading"><h2 id="profiles-heading"><span lang="en">Find my work</span><span lang="zh-Hant">學術與開源檔案</span></h2></div>
-  <div class="profile-links-grid">
-    <article class="profile-link-card scholar-card">
-      <div class="profile-card-header"><div><h3><a href="https://scholar.google.com/citations?user=Gr3mhHUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a></h3><p><span lang="en">Publications &amp; citations</span><span lang="zh-Hant">論文著作與學術引用</span></p></div></div>
-      <details class="profile-qr-details"><summary><span lang="en">QR code &amp; sharing</span><span lang="zh-Hant">QR Code 與分享</span></summary>
-        <div class="profile-qr-row">
-          <a href="assets/profiles/google-scholar-qr.svg" class="qr-thumbnail" data-enlarge data-title="Google Scholar · QR Code" data-destination="https://scholar.google.com/citations?user=Gr3mhHUAAAAJ" aria-label="Enlarge Google Scholar QR Code / 放大 QR Code"><img width="102" height="102" src="assets/profiles/google-scholar-qr.svg" alt="QR code linking to Sheng-Wei Chan’s Google Scholar profile" loading="lazy" /></a>
-          <div class="qr-actions"><a href="assets/profiles/google-scholar-qr.png" download="Sheng-Wei-Chan-Google-Scholar-QR.png"><span lang="en">Download QR · PNG</span><span lang="zh-Hant">下載 QR 圖片 · PNG</span></a><button class="text-button" type="button" data-copy-value="https://scholar.google.com/citations?user=Gr3mhHUAAAAJ"><span lang="en">Copy profile link</span><span lang="zh-Hant">複製個人網址</span></button></div>
-        </div>
-      </details>
-    </article>
-    <article class="profile-link-card github-card">
-      <div class="profile-card-header"><div><h3><a href="https://github.com/henrychan0719" target="_blank" rel="noopener noreferrer">GitHub ↗</a></h3><p><span lang="en">Research code &amp; repositories</span><span lang="zh-Hant">研究程式碼與開源專案</span></p></div></div>
-      <details class="profile-qr-details"><summary><span lang="en">QR code &amp; sharing</span><span lang="zh-Hant">QR Code 與分享</span></summary>
-        <div class="profile-qr-row">
-          <a href="assets/profiles/github-qr.svg" class="qr-thumbnail" data-enlarge data-title="GitHub · QR Code" data-destination="https://github.com/henrychan0719" aria-label="Enlarge GitHub QR Code / 放大 QR Code"><img width="102" height="102" src="assets/profiles/github-qr.svg" alt="QR code linking to Sheng-Wei Chan’s GitHub profile" loading="lazy" /></a>
-          <div class="qr-actions"><a href="assets/profiles/github-qr.png" download="Sheng-Wei-Chan-GitHub-QR.png"><span lang="en">Download QR · PNG</span><span lang="zh-Hant">下載 QR 圖片 · PNG</span></a><button class="text-button" type="button" data-copy-value="https://github.com/henrychan0719"><span lang="en">Copy profile link</span><span lang="zh-Hant">複製個人網址</span></button></div>
-        </div>
-      </details>
-    </article>
-  </div>
-</section>
-
-
-      <!-- About -->
-      
-
-      <!-- Research areas -->
-      
-
-      <!-- News -->
-      
 
       <!-- Publications -->
       <section id="publications" class="section">
@@ -607,49 +632,9 @@
       </div>
     </article></div>
       </section>
-      <section id="about" class="section">
-        <h2><span lang="en">About</span><span lang="zh-Hant">關於我</span></h2>
-        <div lang="en">
-          <p>I am a fourth-year undergraduate in the Department of Electrical and Computer Engineering at Tamkang University. I conduct computer vision and deep learning research in the AMOS Laboratory under the supervision of Professor Jen-Shiun Chiang.</p>
-          <p>Through papers and undergraduate research projects, I have gained experience in model design, implementation, training and evaluation, and academic writing. I identify research questions by comparing the literature and examining experimental observations, propose ideas, and develop them into testable models and experiments with my advisor and collaborators. My work uses CNN, Transformer, and Mamba architectures and explores the integration of state estimation with neural networks, including Kalman-inspired feature fusion for 3D organ and tumor segmentation.</p>
-          <p>My research has been accepted at ISPACS 2026 and IET ICETA 2026, and my semantic segmentation research is supported by an Undergraduate Research Grant from Taiwan’s National Science and Technology Council. I also serve as a TPC Reviewer for ISPACS 2026, reviewing research submissions.</p>
-          <p>My current work focuses on ADM-Net for semantic segmentation and streaming 3D point cloud semantic segmentation. I study adaptive feature fusion and high-resolution detail preservation in ADM-Net, and cross-frame memory to complement incomplete LiDAR observations.</p>
-        </div>
-        <div lang="zh-Hant">
-          <p>我目前就讀於淡江大學電機工程學系四年級，於 AMOS 實驗室進行電腦視覺與深度學習研究，指導教授為江正雄教授。</p>
-          <p>大學期間，我持續參與論文與專題研究，累積模型設計、程式實作、訓練評估與論文撰寫的經驗。我習慣從文獻比較與實驗觀察中尋找研究問題，主動提出構想，再與指導教授及合作夥伴討論，將想法落實為可驗證的模型與實驗。在方法上，我運用 CNN、Transformer 與 Mamba 等深度學習架構，也探索狀態估計方法與神經網路的結合，例如將受卡爾曼濾波啟發的特徵融合用於三維器官與腫瘤分割。</p>
-          <p>目前已有研究成果獲 ISPACS 2026 與 IET ICETA 2026 接受，語意分割相關研究亦獲國科會大專學生研究計畫補助。我也擔任 ISPACS 2026 論文審稿人（TPC Reviewer），參與研究論文的審查工作。</p>
-          <p>目前，我主要進行 ADM-Net 語意分割與串流三維點雲語意分割研究，分別探索自適應特徵融合與高解析度細節保留，以及利用跨幀記憶補足 LiDAR 的不完整觀測。</p>
-        </div>
-        <div class="tag-group">
-<span lang="en">Computer Vision</span><span lang="zh-Hant">電腦視覺</span>
-<span lang="en">Model Architecture</span><span lang="zh-Hant">模型架構設計</span>
-<span lang="en">Feature Fusion</span><span lang="zh-Hant">特徵融合</span>
-<span lang="en">Sequence Modeling</span><span lang="zh-Hant">序列建模</span>
-<span lang="en">State Estimation</span><span lang="zh-Hant">狀態估計</span>
-<span lang="en">Edge Deployment</span><span lang="zh-Hant">邊緣部署</span>
-        </div>
-      </section>
+      
 
-<section id="admissions" class="section">
-  <h2><span lang="en">Graduate Admissions</span><span lang="zh-Hant">推薦甄試專區</span></h2>
-  <p class="section-note"><span lang="en">Results from the 2027 master’s admissions cycle, grouped by current status.</span><span lang="zh-Hant">記錄各校系所的優先錄取、正取、面試資格與備取結果。</span></p>
-  <article class="admissions-update">
-    <div class="admissions-heading"><time datetime="2026-11">2026.11</time><h3><span lang="en">2027 master’s admissions</span><span lang="zh-Hant">116 學年度碩士班甄試</span></h3></div>
-    <ul class="admissions-summary" aria-label="Admissions progress / 甄試進度"><li><strong>4</strong><span lang="en">Priority &amp; regular admission</span><span lang="zh-Hant">優先錄取與正取</span></li><li><strong>11</strong><span lang="en">Interview eligibility</span><span lang="zh-Hant">獲面試資格</span></li><li><strong>3</strong><span lang="en">Waitlisted</span><span lang="zh-Hant">備取</span></li></ul>
-    <details class="admissions-details"><summary><span lang="en">View universities and programs</span><span lang="zh-Hant">查看各校系所結果</span></summary><div class="admissions-grid"><section class="admission-group priority" aria-labelledby="admission-priority"><h4 id="admission-priority"><span lang="en">Priority &amp; regular admission</span><span lang="zh-Hant">優先錄取與正取</span> <span class="admission-count">4</span></h4><div class="admission-school"><h5><span lang="en">National Yang Ming Chiao Tung University</span><span lang="zh-Hant">國立陽明交通大學</span> <span class="university-abbr">(NYCU)</span></h5><p class="admission-status"><span lang="en">Admitted</span><span lang="zh-Hant">正取</span></p><ul><li><span lang="en">Master’s program in artificial intelligence and green energy technology</span><span lang="zh-Hant">人工智慧與綠能科技研究所碩士班</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Chung Cheng University</span><span lang="zh-Hant">國立中正大學</span> <span class="university-abbr">(CCU)</span></h5><p class="admission-status"><span lang="en">Priority admission</span><span lang="zh-Hant">優先錄取</span></p><ul><li><span lang="en">Electrical engineering — Signal and Intelligent Computing</span><span lang="zh-Hant">電機工程學系碩士班－信號與智慧計算組</span></li><li><span lang="en">Electrical engineering — Interdisciplinary Intelligent Technology (AI)</span><span lang="zh-Hant">電機工程學系碩士班－跨領域智慧科技（AI）組</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Taiwan University of Science and Technology</span><span lang="zh-Hant">國立臺灣科技大學</span> <span class="university-abbr">(NTUST)</span></h5><p class="admission-status"><span lang="en">Priority admission</span><span lang="zh-Hant">優先錄取</span></p><ul><li><span lang="en">Graduate Institute of AI Cross-disciplinary Technology</span><span lang="zh-Hant">人工智慧跨域科技研究所碩士班</span></li></ul></div></section>
-<section class="admission-group interview" aria-labelledby="admission-interview"><h4 id="admission-interview"><span lang="en">Interview eligibility</span><span lang="zh-Hant">獲面試資格</span> <span class="admission-count">11</span></h4><div class="admission-school"><h5><span lang="en">National Taiwan University</span><span lang="zh-Hant">國立臺灣大學</span> <span class="university-abbr">(NTU)</span></h5><ul><li><span lang="en">Communication engineering — Group C (丙)</span><span lang="zh-Hant">電信工程學研究所碩士班丙組</span></li><li><span lang="en">Artificial intelligence</span><span lang="zh-Hant">人工智慧研究所碩士班</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Sun Yat-sen University</span><span lang="zh-Hant">國立中山大學</span> <span class="university-abbr">(NSYSU)</span></h5><ul><li><span lang="en">Electrical engineering — Group C (丙)</span><span lang="zh-Hant">電機工程學系碩士班丙組</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Chung Hsing University</span><span lang="zh-Hant">國立中興大學</span> <span class="university-abbr">(NCHU)</span></h5><ul><li><span lang="en">Electrical engineering — Group A (甲)</span><span lang="zh-Hant">電機工程學系碩士班甲組</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Chung Cheng University</span><span lang="zh-Hant">國立中正大學</span> <span class="university-abbr">(CCU)</span></h5><ul><li><span lang="en">Electrical engineering — Computer Engineering</span><span lang="zh-Hant">電機工程學系碩士班－計算機工程組</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Taiwan University of Science and Technology</span><span lang="zh-Hant">國立臺灣科技大學</span> <span class="university-abbr">(NTUST)</span></h5><ul><li><span lang="en">Electrical engineering — Group C (丙)</span><span lang="zh-Hant">電機工程系碩士班丙組</span></li><li><span lang="en">Electrical engineering — Group E (戊)</span><span lang="zh-Hant">電機工程系碩士班戊組</span></li><li><span lang="en">Electrical engineering — AI group</span><span lang="zh-Hant">電機工程系碩士班 AI 組</span></li><li><span lang="en">Computer science and information engineering</span><span lang="zh-Hant">資訊工程系碩士班</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Taipei University of Technology</span><span lang="zh-Hant">國立臺北科技大學</span> <span class="university-abbr">(NTUT)</span></h5><ul><li><span lang="en">Electrical engineering — Group E (戊)</span><span lang="zh-Hant">電機工程系碩士班戊組</span></li><li><span lang="en">Electronic engineering — Group A (甲)</span><span lang="zh-Hant">電子工程系碩士班甲組</span></li></ul></div></section>
-<section class="admission-group waitlist" aria-labelledby="admission-waitlist"><h4 id="admission-waitlist"><span lang="en">Waitlisted</span><span lang="zh-Hant">備取</span> <span class="admission-count">3</span></h4><div class="admission-school"><h5><span lang="en">National Tsing Hua University</span><span lang="zh-Hant">國立清華大學</span> <span class="university-abbr">(NTHU)</span></h5><ul><li><span lang="en">Power mechanical engineering — Group G (庚)</span><span lang="zh-Hant">動力機械工程學系碩士班庚組</span></li></ul></div>
-<div class="admission-school"><h5><span lang="en">National Yang Ming Chiao Tung University</span><span lang="zh-Hant">國立陽明交通大學</span> <span class="university-abbr">(NYCU)</span></h5><ul><li><span lang="en">Data science and engineering</span><span lang="zh-Hant">數據科學與工程研究所碩士班</span></li><li><span lang="en">Intelligent systems</span><span lang="zh-Hant">智能系統研究所碩士班</span></li></ul></div></section></div></details>
-  </article>
-</section>
+
 
 <section id="research" class="section">
         <h2><span lang="en">Research Areas</span><span lang="zh-Hant">研究領域</span></h2>
