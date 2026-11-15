@@ -178,3 +178,12 @@ html[data-lang="zh"] .hero h1 { letter-spacing: -.7px; line-height: 1.4; }
   .admissions-grid { grid-template-rows: none; }
   .admission-group.interview, .admission-group.waitlist { grid-column: auto; grid-row: auto; }
 }
+
+/* Admissions and publication refinements, November 2026. */
+#admissions > .section-note { margin: -5px 0 20px; }
+.admission-status { margin: -2px 0 7px; color: var(--accent); font-size: 11px; font-weight: 500; }
+#news .news-box { max-height: none; overflow: visible; }
+.citation-overview { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; margin: 0 0 24px; padding: 17px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.citation-label { font-size: 15px; font-weight: 600; color: var(--ink); }
+.citation-overview p { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+.citation-overview > a { font-size: 13px; font-weight: 500; }
